@@ -47,7 +47,7 @@ namespace TaskTimer
                     if (chbShowLastPeriods.Checked)
                     {
                         param.Add(timer.Value.GetCumulated(CumulateRange.Yesterday));
-                        if (chbShowDif.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.Today).Subtract(timer.Value.GetCumulated(CumulateRange.Yesterday)));
+                        if (chbShowDif.Checked)  param.Add(timer.Value.GetCumulated(CumulateRange.Today).Subtract(timer.Value.GetCumulated(CumulateRange.Yesterday)));
                     }
                 }
 
@@ -73,8 +73,37 @@ namespace TaskTimer
 
                 if (chbShowTotalResults.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.Total));
 
-
                 dgvTimerResult.Rows.Add(param.ToArray());
+            }
+
+            DataGridViewCellStyle positiveDif = new DataGridViewCellStyle { ForeColor = Color.Green };
+            DataGridViewCellStyle negativeDif = new DataGridViewCellStyle { ForeColor = Color.Red };
+            int checkedSegments = 0;
+
+            if (chbShowDayResults.Checked) checkedSegments++;
+            if (chbShowWeekResults.Checked) checkedSegments++;
+            if (chbShowMonthResults.Checked) checkedSegments++;
+
+            foreach (DataGridViewRow row in dgvTimerResult.Rows)
+            {
+                if (chbShowLastPeriods.Checked && chbShowDif.Checked)
+                {
+                    if (checkedSegments >= 3)
+                    {
+                        if(TimeSpan.Parse(row.Cells[9].Value.ToString()) < TimeSpan.Zero) row.Cells[9].Style = negativeDif;
+                        if(TimeSpan.Parse(row.Cells[9].Value.ToString()) > TimeSpan.Zero) row.Cells[9].Style = positiveDif;
+                    }
+                    if (checkedSegments  >= 2)
+                    {
+                        if (TimeSpan.Parse(row.Cells[6].Value.ToString()) < TimeSpan.Zero) row.Cells[6].Style = negativeDif;
+                        if (TimeSpan.Parse(row.Cells[6].Value.ToString()) > TimeSpan.Zero) row.Cells[6].Style = positiveDif;
+                    }
+                    if (checkedSegments  >= 1)
+                    {
+                        if (TimeSpan.Parse(row.Cells[3].Value.ToString()) < TimeSpan.Zero) row.Cells[3].Style = negativeDif;
+                        if (TimeSpan.Parse(row.Cells[3].Value.ToString()) > TimeSpan.Zero) row.Cells[3].Style = positiveDif;
+                    }
+                }
             }
         }
 
@@ -151,6 +180,10 @@ namespace TaskTimer
             else chbShowDif.Enabled = true;
         }
 
-        
+        private void btnExportOverview_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
