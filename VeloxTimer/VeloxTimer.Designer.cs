@@ -1,6 +1,6 @@
 ﻿namespace TaskTimer
 {
-    partial class TaskTimerMain
+    partial class VeloxTimer
     {
         /// <summary>
         /// Erforderliche Designervariable.
@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskTimerMain));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VeloxTimer));
             this.lblTitleCurrent = new System.Windows.Forms.Label();
             this.cbxTotalTimeSpanSelect = new System.Windows.Forms.ComboBox();
             this.tmrCurrentUpdater = new System.Windows.Forms.Timer(this.components);
-            this.btnCreateResults = new System.Windows.Forms.Button();
+            this.btnResults = new System.Windows.Forms.Button();
             this.btnOpenCategoryFile = new System.Windows.Forms.Button();
             this.btnReloadCategories = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -74,16 +74,17 @@
             this.tmrCurrentUpdater.Interval = 1000;
             this.tmrCurrentUpdater.Tick += new System.EventHandler(this.tmrCurrentUpdater_Tick);
             // 
-            // btnCreateResults
+            // btnResults
             // 
-            this.btnCreateResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCreateResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateResults.Location = new System.Drawing.Point(334, 50);
-            this.btnCreateResults.Name = "btnCreateResults";
-            this.btnCreateResults.Size = new System.Drawing.Size(187, 29);
-            this.btnCreateResults.TabIndex = 0;
-            this.btnCreateResults.Text = "Auswertung generieren";
-            this.btnCreateResults.UseVisualStyleBackColor = true;
+            this.btnResults.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResults.Location = new System.Drawing.Point(398, 50);
+            this.btnResults.Name = "btnResults";
+            this.btnResults.Size = new System.Drawing.Size(123, 29);
+            this.btnResults.TabIndex = 0;
+            this.btnResults.Text = "Auswertung";
+            this.btnResults.UseVisualStyleBackColor = true;
+            this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
             // btnOpenCategoryFile
             // 
@@ -110,7 +111,7 @@
             this.btnReloadCategories.UseVisualStyleBackColor = true;
             this.btnReloadCategories.Click += new System.EventHandler(this.btnReloadCategories_Click);
             // 
-            // TaskTimerMain
+            // VeloxTimer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -120,12 +121,12 @@
             this.Controls.Add(this.lblTitleCurrent);
             this.Controls.Add(this.btnReloadCategories);
             this.Controls.Add(this.btnOpenCategoryFile);
-            this.Controls.Add(this.btnCreateResults);
+            this.Controls.Add(this.btnResults);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "TaskTimerMain";
-            this.Text = "TaskTimer";
+            this.Name = "VeloxTimer";
+            this.Text = "Velox";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskTimerMain_FormClosing);
             this.Load += new System.EventHandler(this.TaskTimerMain_Load);
             this.ResumeLayout(false);
@@ -137,7 +138,7 @@
         private System.Windows.Forms.Label lblTitleCurrent;
         private System.Windows.Forms.ComboBox cbxTotalTimeSpanSelect;
         private System.Windows.Forms.Timer tmrCurrentUpdater;
-        private System.Windows.Forms.Button btnCreateResults;
+        private System.Windows.Forms.Button btnResults;
         private System.Windows.Forms.Button btnOpenCategoryFile;
         private System.Windows.Forms.Button btnReloadCategories;
     }

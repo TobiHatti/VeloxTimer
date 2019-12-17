@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleResult));
             this.btnCloseDialog = new System.Windows.Forms.Button();
             this.btnCreateLogFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -73,6 +74,7 @@
             this.btnCreateLogFile.TabIndex = 0;
             this.btnCreateLogFile.Text = "Auswertung Exportieren";
             this.btnCreateLogFile.UseVisualStyleBackColor = true;
+            this.btnCreateLogFile.Click += new System.EventHandler(this.btnCreateLogFile_Click);
             // 
             // label1
             // 
@@ -300,10 +302,10 @@
             this.Controls.Add(this.btnCreateLogFile);
             this.Controls.Add(this.btnCloseDialog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SimpleResult";
-            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Auswertung";

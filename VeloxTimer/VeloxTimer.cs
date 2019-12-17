@@ -14,11 +14,11 @@ using System.Windows.Forms;
 namespace TaskTimer
 {
 
-    public partial class TaskTimerMain : Form
+    public partial class VeloxTimer : Form
     {
         private string categoryFile = @"Categories.txt";
         private Dictionary<int, TimerElement> timers = new Dictionary<int, TimerElement>();
-        public TaskTimerMain()
+        public VeloxTimer()
         {
             InitializeComponent();
         }
@@ -36,7 +36,7 @@ namespace TaskTimer
                             && this.Controls[i] != lblTitleCurrent
                             && this.Controls[i] != btnOpenCategoryFile
                             && this.Controls[i] != btnReloadCategories
-                            && this.Controls[i] != btnCreateResults)
+                            && this.Controls[i] != btnResults)
                         this.Controls.Remove(this.Controls[i]);
                 }
 
@@ -241,8 +241,6 @@ namespace TaskTimer
                 }
             }
         }
-
-
        
         private void btnOpenCategoryFile_Click(object sender, EventArgs e)
         {
@@ -315,6 +313,12 @@ namespace TaskTimer
 
                 if(result == DialogResult.No) e.Cancel = false;
             }
+        }
+
+        private void btnResults_Click(object sender, EventArgs e)
+        {
+            FullResult fullResultForm = new FullResult();
+            fullResultForm.ShowDialog();
         }
     }
 }

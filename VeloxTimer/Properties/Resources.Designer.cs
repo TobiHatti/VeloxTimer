@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TaskTimer.Properties {
+namespace VeloxTimer.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace TaskTimer.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TaskTimer.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("VeloxTimer.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,22 +61,22 @@ namespace TaskTimer.Properties {
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
         /// </summary>
-        internal static System.Drawing.Bitmap timer {
+        internal static System.Drawing.Icon VeloxTimerLogo {
             get {
-                object obj = ResourceManager.GetObject("timer", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("VeloxTimerLogo", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
         /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Icon timer1 {
+        internal static System.Drawing.Bitmap VeloxTimerLogo1 {
             get {
-                object obj = ResourceManager.GetObject("timer1", resourceCulture);
-                return ((System.Drawing.Icon)(obj));
+                object obj = ResourceManager.GetObject("VeloxTimerLogo1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

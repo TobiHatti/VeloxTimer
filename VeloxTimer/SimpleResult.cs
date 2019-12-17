@@ -76,5 +76,10 @@ namespace TaskTimer
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+        private void btnCreateLogFile_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("TODO");
+        }
     }
 }

@@ -70,6 +70,8 @@ namespace TaskTimer
                 sr.ReadLine();
                 while ((line = sr.ReadLine()) != null)
                 {
+                    if (string.IsNullOrEmpty(line)) continue;
+
                     string[] lineSegments = line.Split(';');
                     string category = lineSegments[0];
                     DateTime startTime = DateTime.Parse(lineSegments[1]);
@@ -122,9 +124,9 @@ namespace TaskTimer
                 sr.Close();
                 return cumulated;
             }
-            catch(Exception)
+            catch (Exception)
             {
-                if(!alertShown)
+                if (!alertShown)
                     MessageBox.Show($"Die Datei \"{LogFile}\" konnte nicht geladen werden. Schließen Sie die Datei und versuchen Sie es erneut.", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
 
                 alertShown = true;
