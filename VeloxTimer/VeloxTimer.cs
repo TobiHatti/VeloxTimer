@@ -16,8 +16,8 @@ namespace TaskTimer
 
     public partial class VeloxTimer : Form
     {
-        private string categoryFile = @"Categories.txt";
-        private Dictionary<int, TimerElement> timers = new Dictionary<int, TimerElement>();
+        private readonly string categoryFile = @"Categories.txt";
+        private readonly Dictionary<int, TimerElement> timers = new Dictionary<int, TimerElement>();
         public VeloxTimer()
         {
             InitializeComponent();
@@ -49,78 +49,90 @@ namespace TaskTimer
                 {
                     if (string.IsNullOrEmpty(category)) continue;
                     // Create Title Label
-                    Label lblTitle = new Label();
-                    lblTitle.Name = $"lblTitle{ctr}";
-                    lblTitle.Text = category;
-                    lblTitle.Left = 12;
-                    lblTitle.Top = 55 + ctr * offset;
-                    lblTitle.Width = 125;
-                    lblTitle.AutoSize = false;
-                    lblTitle.Font = new Font("Microsoft Sans Serif", 12);
-                    lblTitle.TextAlign = ContentAlignment.MiddleRight;
+                    Label lblTitle = new Label
+                    {
+                        Name = $"lblTitle{ctr}",
+                        Text = category,
+                        Left = 12,
+                        Top = 55 + ctr * offset,
+                        Width = 125,
+                        AutoSize = false,
+                        Font = new Font("Microsoft Sans Serif", 12),
+                        TextAlign = ContentAlignment.MiddleRight
+                    };
                     //lblTitle.BackColor = Color.Red;
                     this.Controls.Add(lblTitle);
 
                     // Create CurrentTime Label
-                    Label lblCurrentTime = new Label();
-                    lblCurrentTime.Name = $"lblCurrentTime{ctr}";
-                    lblCurrentTime.Text = "00:00:00";
-                    lblCurrentTime.Left = 250;
-                    lblCurrentTime.Top = 55 + ctr * offset;
-                    lblCurrentTime.Width = 90;
-                    lblCurrentTime.AutoSize = false;
-                    lblCurrentTime.Font = new Font("Microsoft Sans Serif", 12);
-                    lblCurrentTime.TextAlign = ContentAlignment.MiddleRight;
+                    Label lblCurrentTime = new Label
+                    {
+                        Name = $"lblCurrentTime{ctr}",
+                        Text = "00:00:00",
+                        Left = 250,
+                        Top = 55 + ctr * offset,
+                        Width = 90,
+                        AutoSize = false,
+                        Font = new Font("Microsoft Sans Serif", 12),
+                        TextAlign = ContentAlignment.MiddleRight
+                    };
                     //lblCurrentTime.BackColor = Color.Red;
                     this.Controls.Add(lblCurrentTime);
 
                     // Create TotalTime Label
-                    Label lblTotalTime = new Label();
-                    lblTotalTime.Name = $"lblTotalTime{ctr}";
-                    lblTotalTime.Text = "00:00:00:00";
-                    lblTotalTime.Left = 350;
-                    lblTotalTime.Top = 55 + ctr * offset;
-                    lblTotalTime.Width = 125;
-                    lblTotalTime.AutoSize = false;
-                    lblTotalTime.Font = new Font("Microsoft Sans Serif", 12);
-                    lblTotalTime.TextAlign = ContentAlignment.MiddleRight;
+                    Label lblTotalTime = new Label
+                    {
+                        Name = $"lblTotalTime{ctr}",
+                        Text = "00:00:00:00",
+                        Left = 350,
+                        Top = 55 + ctr * offset,
+                        Width = 125,
+                        AutoSize = false,
+                        Font = new Font("Microsoft Sans Serif", 12),
+                        TextAlign = ContentAlignment.MiddleRight
+                    };
                     //lblTotalTime.BackColor = Color.Red;
                     this.Controls.Add(lblTotalTime);
 
                     // Create StartStop-Button
-                    Button btnStartStop = new Button();
-                    btnStartStop.Name = $"btnStartStop{ctr}";
-                    btnStartStop.Text = "Start";
-                    btnStartStop.Left = 140;
-                    btnStartStop.Top = 50 + ctr * offset;
-                    btnStartStop.Width = 95;
-                    btnStartStop.Height = 29;
-                    btnStartStop.Font = new Font("Microsoft Sans Serif", 12);
-                    btnStartStop.BackColor = Color.Gainsboro;
+                    Button btnStartStop = new Button
+                    {
+                        Name = $"btnStartStop{ctr}",
+                        Text = "Start",
+                        Left = 140,
+                        Top = 50 + ctr * offset,
+                        Width = 95,
+                        Height = 29,
+                        Font = new Font("Microsoft Sans Serif", 12),
+                        BackColor = Color.Gainsboro
+                    };
                     btnStartStop.Click += BtnStartStop_Click;
                     this.Controls.Add(btnStartStop);
 
                     // Create Options-Button
-                    Button btnSimpResults = new Button();
-                    btnSimpResults.Name = $"btnSimpleResults{ctr}";
-                    btnSimpResults.Text = "...";
-                    btnSimpResults.Left = 490;
-                    btnSimpResults.Top = 50 + ctr * offset;
-                    btnSimpResults.Width = 31;
-                    btnSimpResults.Height = 29;
-                    btnSimpResults.Font = new Font("Microsoft Sans Serif", 12);
-                    btnSimpResults.BackColor = Color.Gainsboro;
+                    Button btnSimpResults = new Button
+                    {
+                        Name = $"btnSimpleResults{ctr}",
+                        Text = "...",
+                        Left = 490,
+                        Top = 50 + ctr * offset,
+                        Width = 31,
+                        Height = 29,
+                        Font = new Font("Microsoft Sans Serif", 12),
+                        BackColor = Color.Gainsboro
+                    };
                     btnSimpResults.Click += BtnSimpResults_Click;
                     this.Controls.Add(btnSimpResults);
 
                     // Create Indicator-Light
-                    PictureBox pbxIndicate = new PictureBox();
-                    pbxIndicate.Name = $"pbxIndicate{ctr}";
-                    pbxIndicate.BackColor = Color.Red;
-                    pbxIndicate.Left = 228;
-                    pbxIndicate.Top = 51 + ctr * offset;
-                    pbxIndicate.Width = 17;
-                    pbxIndicate.Height = 27;
+                    PictureBox pbxIndicate = new PictureBox
+                    {
+                        Name = $"pbxIndicate{ctr}",
+                        BackColor = Color.Red,
+                        Left = 228,
+                        Top = 51 + ctr * offset,
+                        Width = 17,
+                        Height = 27
+                    };
                     this.Controls.Add(pbxIndicate);
 
                     timers.Add(ctr, new TimerElement(category));
@@ -318,6 +330,7 @@ namespace TaskTimer
         private void btnResults_Click(object sender, EventArgs e)
         {
             FullResult fullResultForm = new FullResult();
+            fullResultForm.Timers = timers;
             fullResultForm.ShowDialog();
         }
     }

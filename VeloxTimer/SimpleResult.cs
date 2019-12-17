@@ -31,39 +31,39 @@ namespace TaskTimer
 
             char sign = ' ';
 
-            TimeSpan difDay = pTimer.GetCumulated(CumulateRange.Yesterday).Subtract(pTimer.GetCumulated(CumulateRange.Today));
-            if (difDay < TimeSpan.Zero)
+            TimeSpan difDay = pTimer.GetCumulated(CumulateRange.Today).Subtract(pTimer.GetCumulated(CumulateRange.Yesterday));
+            if (difDay > TimeSpan.Zero)
             {
                 lblDifDay.ForeColor = Color.Green;
                 sign = '+';
             }
-            else if (difDay > TimeSpan.Zero)
+            else if (difDay < TimeSpan.Zero)
             {
                 lblDifDay.ForeColor = Color.Red;
                 sign = '-';
             }
             lblDifDay.Text = sign + difDay.ToString(@"hh\:mm\:ss");
 
-            TimeSpan difWeek = pTimer.GetCumulated(CumulateRange.LastWeek).Subtract(pTimer.GetCumulated(CumulateRange.ThisWeek));
-            if (difWeek < TimeSpan.Zero)
+            TimeSpan difWeek = pTimer.GetCumulated(CumulateRange.ThisWeek).Subtract(pTimer.GetCumulated(CumulateRange.LastWeek));
+            if (difWeek > TimeSpan.Zero)
             {
                 lblDifWeek.ForeColor = Color.Green;
                 sign = '+';
             }
-            else if (difWeek > TimeSpan.Zero)
+            else if (difWeek < TimeSpan.Zero)
             {
                 lblDifWeek.ForeColor = Color.Red;
                 sign = '-';
             }
             lblDifWeek.Text = sign + difWeek.ToString(@"d\:hh\:mm\:ss");
 
-            TimeSpan difMonth = pTimer.GetCumulated(CumulateRange.LastMonth).Subtract(pTimer.GetCumulated(CumulateRange.ThisMonth));
-            if (difMonth < TimeSpan.Zero)
+            TimeSpan difMonth = pTimer.GetCumulated(CumulateRange.ThisMonth).Subtract(pTimer.GetCumulated(CumulateRange.LastMonth));
+            if (difMonth > TimeSpan.Zero)
             {
                 lblDifMonth.ForeColor = Color.Green;
                 sign = '+';
             }
-            else if (difMonth > TimeSpan.Zero)
+            else if (difMonth < TimeSpan.Zero)
             {
                 lblDifMonth.ForeColor = Color.Red;
                 sign = '-';

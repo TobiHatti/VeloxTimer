@@ -12,23 +12,145 @@ namespace TaskTimer
 {
     public partial class FullResult : Form
     {
+        public Dictionary<int, TimerElement> Timers { get; set; } = null;
+
+
         public FullResult()
         {
             InitializeComponent();
+        }
+
+        private void FullResult_Load(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void UpdateOverviewDGV()
+        {
+            CreateOverviewDGV();
+            FillOverviewDGV();
+        }
+
+        private void FillOverviewDGV()
+        {
+            List<object> param;
+
+            foreach (KeyValuePair<int, TimerElement> timer in Timers)
+            {
+                param = new List<object>();
+
+                param.Add(timer.Value.CategoryName);
+
+                if (chbShowDayResults.Checked)
+                {
+                    param.Add(timer.Value.GetCumulated(CumulateRange.Today));
+                    if (chbShowLastPeriods.Checked)
+                    {
+                        param.Add(timer.Value.GetCumulated(CumulateRange.Yesterday));
+                        if (chbShowDif.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.Today).Subtract(timer.Value.GetCumulated(CumulateRange.Yesterday)));
+                    }
+                }
+
+                if (chbShowWeekResults.Checked)
+                {
+                    param.Add(timer.Value.GetCumulated(CumulateRange.ThisWeek));
+                    if (chbShowLastPeriods.Checked)
+                    {
+                        param.Add(timer.Value.GetCumulated(CumulateRange.LastWeek));
+                        if (chbShowDif.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.ThisWeek).Subtract(timer.Value.GetCumulated(CumulateRange.LastWeek)));
+                    }
+                }
+
+                if (chbShowMonthResults.Checked)
+                {
+                    param.Add(timer.Value.GetCumulated(CumulateRange.ThisMonth));
+                    if (chbShowLastPeriods.Checked)
+                    {
+                        param.Add(timer.Value.GetCumulated(CumulateRange.LastMonth));
+                        if (chbShowDif.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.ThisMonth).Subtract(timer.Value.GetCumulated(CumulateRange.LastMonth)));
+                    }
+                }
+
+                if (chbShowTotalResults.Checked) param.Add(timer.Value.GetCumulated(CumulateRange.Total));
+
+
+                dgvTimerResult.Rows.Add(param.ToArray());
+            }
+        }
+
+        private void CreateOverviewDGV()
+        {
+            dgvTimerResult.Columns.Clear();
 
             dgvTimerResult.Columns.Add("colCategory", "Kategorie");
-            dgvTimerResult.Columns.Add("colToday", "Heute");
-            dgvTimerResult.Columns.Add("colYesterday", "Gestern");
-            dgvTimerResult.Columns.Add("colDifDay", "Differenz");
-            dgvTimerResult.Columns.Add("colThisWeek", "Diese Woche");
-            dgvTimerResult.Columns.Add("colLastWeek", "Letzte Woche");
-            dgvTimerResult.Columns.Add("colDifWeek", "Differenz");
-            dgvTimerResult.Columns.Add("colThisMonth", "Diesen Monat");
-            dgvTimerResult.Columns.Add("colLastMonth", "Letzten Monat");
-            dgvTimerResult.Columns.Add("colDifMonth", "Differenz");
-            dgvTimerResult.Columns.Add("colTotal", "Gesamt");
-            dgvTimerResult.Rows.Add();
+
+            if (chbShowDayResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colToday", "Heute");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colYesterday", "Gestern");
+                    if(chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifDay", "Differenz");
+                }
+            }
+
+            if (chbShowWeekResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colThisWeek", "Diese Woche");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colLastWeek", "Letzte Woche");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifWeek", "Differenz");
+                }
+            }
+
+            if (chbShowMonthResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colThisMonth", "Diesen Monat");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colLastMonth", "Letzten Monat");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifMonth", "Differenz");
+                }
+            }
+
+            if (chbShowTotalResults.Checked) dgvTimerResult.Columns.Add("colTotal", "Gesamt");
 
         }
+
+        private void chbShowDayResults_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void chbShowMonthResults_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void chbShowDif_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void chbShowWeekResults_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void chbShowTotalResults_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+        }
+
+        private void chbShowLastPeriods_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateOverviewDGV();
+
+            if (!(sender as CheckBox).Checked) chbShowDif.Enabled = false;
+            else chbShowDif.Enabled = true;
+        }
+
+        
     }
 }
