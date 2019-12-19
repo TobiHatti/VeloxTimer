@@ -1,4 +1,4 @@
-﻿namespace TaskTimer
+﻿namespace VeloxTimer
 {
     partial class VeloxTimer
     {

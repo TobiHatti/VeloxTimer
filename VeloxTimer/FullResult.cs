@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskTimer
+namespace VeloxTimer
 {
     public partial class FullResult : Form
     {
