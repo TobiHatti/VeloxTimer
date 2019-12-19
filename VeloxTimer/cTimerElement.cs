@@ -135,6 +135,45 @@ namespace TaskTimer
             }
         }
 
+        public List<Tuple<DateTime, DateTime, TimeSpan>> GetFullLog()
+        {
+            
+            List<Tuple<DateTime, DateTime, TimeSpan>> logEntries = new List<Tuple<DateTime, DateTime, TimeSpan>>();
+
+            try
+            {
+                string line;
+                StreamReader sr = new StreamReader(LogFile);
+                sr.ReadLine();
+                while ((line = sr.ReadLine()) != null)
+                {
+                    if (string.IsNullOrEmpty(line)) continue;
+                    
+                    string[] lineSegments = line.Split(';');
+
+                    if (lineSegments[0] != CategoryName) continue;
+
+                    DateTime startTime = DateTime.Parse(lineSegments[1]);
+                    DateTime endTime = DateTime.Parse(lineSegments[2]);
+                    TimeSpan timeSpan = TimeSpan.Parse(lineSegments[3]);
+
+                    logEntries.Add(new Tuple<DateTime, DateTime, TimeSpan>(startTime, endTime, timeSpan));
+                }
+                sr.Close();
+
+                return logEntries;
+            }
+            catch (Exception)
+            {
+                if (!alertShown)
+                    MessageBox.Show($"Die Datei \"{LogFile}\" konnte nicht geladen werden. Schließen Sie die Datei und versuchen Sie es erneut.", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+
+                alertShown = true;
+
+                return null;
+            }
+        }
+
         private int GetIso8601WeekOfYear(DateTime time)
         {
             DayOfWeek day = CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(time);

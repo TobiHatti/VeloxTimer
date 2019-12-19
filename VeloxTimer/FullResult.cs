@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,12 +24,70 @@ namespace TaskTimer
         private void FullResult_Load(object sender, EventArgs e)
         {
             UpdateOverviewDGV();
+
+            cbxCategories.Items.Add("Alle");
+
+            StreamReader sr = new StreamReader(VeloxTimer.CategoryFile);
+            string category = null;
+            while ((category = sr.ReadLine()) != null)
+            {
+                if (string.IsNullOrEmpty(category)) continue;
+                cbxCategories.Items.Add(category);
+            }
+
+            cbxCategories.SelectedIndex = 0;
         }
 
         private void UpdateOverviewDGV()
         {
             CreateOverviewDGV();
             FillOverviewDGV();
+        }
+
+        private void UpdateDetailDGV()
+        {
+            CreateDetailDGV();
+            FillDetailDGV();
+        }
+
+        private void CreateOverviewDGV()
+        {
+            dgvTimerResult.Columns.Clear();
+
+            dgvTimerResult.Columns.Add("colCategory", "Kategorie");
+
+            if (chbShowDayResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colToday", "Heute");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colYesterday", "Gestern");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifDay", "Differenz");
+                }
+            }
+
+            if (chbShowWeekResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colThisWeek", "Diese Woche");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colLastWeek", "Letzte Woche");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifWeek", "Differenz");
+                }
+            }
+
+            if (chbShowMonthResults.Checked)
+            {
+                dgvTimerResult.Columns.Add("colThisMonth", "Diesen Monat");
+                if (chbShowLastPeriods.Checked)
+                {
+                    dgvTimerResult.Columns.Add("colLastMonth", "Letzten Monat");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifMonth", "Differenz");
+                }
+            }
+
+            if (chbShowTotalResults.Checked) dgvTimerResult.Columns.Add("colTotal", "Gesamt");
+
         }
 
         private void FillOverviewDGV()
@@ -107,44 +166,58 @@ namespace TaskTimer
             }
         }
 
-        private void CreateOverviewDGV()
+        private void CreateDetailDGV()
         {
-            dgvTimerResult.Columns.Clear();
+            dgvResultDetail.Columns.Clear();
 
-            dgvTimerResult.Columns.Add("colCategory", "Kategorie");
+            dgvResultDetail.Columns.Add("colDate", "Datum");
+            dgvResultDetail.Columns.Add("colStartdate", "Startzeit");
+            dgvResultDetail.Columns.Add("colEnddate", "Endzeit");
+            dgvResultDetail.Columns.Add("colDuration", "Dauer");
+        }
 
-            if (chbShowDayResults.Checked)
+        private void FillDetailDGV()
+        {
+            int i = 0;
+            foreach(KeyValuePair<int, TimerElement> timer in Timers)
             {
-                dgvTimerResult.Columns.Add("colToday", "Heute");
-                if (chbShowLastPeriods.Checked)
+                if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "Alle")
                 {
-                    dgvTimerResult.Columns.Add("colYesterday", "Gestern");
-                    if(chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifDay", "Differenz");
+
+                    DataGridViewCellStyle totalStyle = new DataGridViewCellStyle
+                    {
+                        ForeColor = Color.DarkOrange,
+                        Font = new Font(dgvResultDetail.Font, FontStyle.Bold)
+                    };
+
+                    if(cbxCategories.Text == "Alle")
+                        dgvResultDetail.Rows.Add(
+                                timer.Value.CategoryName,
+                                "", "Gesamt:",
+                                timer.Value.GetCumulated(CumulateRange.Total)
+                            );
+                    else
+                        dgvResultDetail.Rows.Add(
+                                "Gesamt:",
+                                "", "",
+                                timer.Value.GetCumulated(CumulateRange.Total)
+                            );
+
+                    dgvResultDetail.Rows[i++].DefaultCellStyle = totalStyle;
+
+                    foreach (Tuple<DateTime, DateTime, TimeSpan> logEntry in timer.Value.GetFullLog())
+                    {
+                        dgvResultDetail.Rows.Add(
+                            logEntry.Item1.ToString("ddd, dd.MM.yyyy"),
+                            logEntry.Item1.ToString("hh:mm:ss"),
+                            logEntry.Item2.ToString("hh:mm:ss"),
+                            logEntry.Item3.ToString()
+                        );
+
+                        i++;
+                    }
                 }
             }
-
-            if (chbShowWeekResults.Checked)
-            {
-                dgvTimerResult.Columns.Add("colThisWeek", "Diese Woche");
-                if (chbShowLastPeriods.Checked)
-                {
-                    dgvTimerResult.Columns.Add("colLastWeek", "Letzte Woche");
-                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifWeek", "Differenz");
-                }
-            }
-
-            if (chbShowMonthResults.Checked)
-            {
-                dgvTimerResult.Columns.Add("colThisMonth", "Diesen Monat");
-                if (chbShowLastPeriods.Checked)
-                {
-                    dgvTimerResult.Columns.Add("colLastMonth", "Letzten Monat");
-                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifMonth", "Differenz");
-                }
-            }
-
-            if (chbShowTotalResults.Checked) dgvTimerResult.Columns.Add("colTotal", "Gesamt");
-
         }
 
         private void chbShowDayResults_CheckedChanged(object sender, EventArgs e)
@@ -182,8 +255,80 @@ namespace TaskTimer
 
         private void btnExportOverview_Click(object sender, EventArgs e)
         {
+            sfdSaveExport.FileName = "TaskOverview.csv";
+            sfdSaveExport.Title = "Übersicht Exportieren";
+            if(sfdSaveExport.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    StreamWriter sw = new StreamWriter(sfdSaveExport.FileName);
+                    sw.WriteLine($"Kategorie;Heute;Gestern;Differenz;Diese Woche;Letzte Woche;Differenz;Diesen Monat;Letzten Monat;Differenz;Gesammt");
+                    foreach (KeyValuePair<int, TimerElement> timer in Timers)
+                    {
+                        sw.WriteLine(
+                            $"{timer.Value.CategoryName};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.Today)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.Yesterday)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.Today).Subtract(timer.Value.GetCumulated(CumulateRange.Yesterday))};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.ThisWeek)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.LastWeek)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.ThisWeek).Subtract(timer.Value.GetCumulated(CumulateRange.LastWeek))};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.ThisMonth)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.LastMonth)};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.ThisMonth).Subtract(timer.Value.GetCumulated(CumulateRange.LastMonth))};" +
+                            $"{timer.Value.GetCumulated(CumulateRange.Total)}"
+                        );
+                    }
+
+                    sw.Close();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Datei konnte nicht gespeichert werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void cbxCategories_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDetailDGV();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btnExportDetail_Click(object sender, EventArgs e)
+        {
+            sfdSaveExport.FileName = "TaskDetail.csv";
+            sfdSaveExport.Title = "Detailansicht Exportieren";
+            if (sfdSaveExport.ShowDialog() == DialogResult.OK)
+            {
+                try
+                {
+                    StreamWriter sw = new StreamWriter(sfdSaveExport.FileName);
+                    int i = 0;
+                    foreach (KeyValuePair<int, TimerElement> timer in Timers)
+                    {
+                        if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "Alle")
+                        {
+                            sw.WriteLine($"Datum;Startzeit;Endzeit;Dauer");
+                            sw.WriteLine($"{timer.Value.CategoryName};;Gesamt:;{timer.Value.GetCumulated(CumulateRange.Total)}");
+
+                            foreach (Tuple<DateTime, DateTime, TimeSpan> logEntry in timer.Value.GetFullLog())
+                                sw.WriteLine($"{logEntry.Item1.ToString("ddd, dd.MM.yyyy")};{logEntry.Item1.ToString("hh:mm:ss")};{logEntry.Item2.ToString("hh:mm:ss")};{logEntry.Item3.ToString()}");
+                        }
+                    }
+
+                    sw.Close();
+                }
+                catch(Exception)
+                {
+                    MessageBox.Show("Datei konnte nicht gespeichert werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
     }
 }

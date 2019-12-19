@@ -16,7 +16,7 @@ namespace TaskTimer
 
     public partial class VeloxTimer : Form
     {
-        private readonly string categoryFile = @"Categories.txt";
+        public static readonly string CategoryFile = @"Categories.txt";
         private readonly Dictionary<int, TimerElement> timers = new Dictionary<int, TimerElement>();
         public VeloxTimer()
         {
@@ -41,7 +41,7 @@ namespace TaskTimer
                 }
 
 
-                StreamReader sr = new StreamReader(categoryFile);
+                StreamReader sr = new StreamReader(CategoryFile);
                 string category = null;
                 int offset = 35;
                 int ctr = 0;
@@ -256,7 +256,7 @@ namespace TaskTimer
        
         private void btnOpenCategoryFile_Click(object sender, EventArgs e)
         {
-            Process.Start("notepad.exe", categoryFile);
+            Process.Start("notepad.exe", CategoryFile);
         }
 
         private void btnReloadCategories_Click(object sender, EventArgs e)

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SimpleResult));
             this.btnCloseDialog = new System.Windows.Forms.Button();
-            this.btnCreateLogFile = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblResultTitle = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -63,18 +62,6 @@
             this.btnCloseDialog.Text = "Schließen";
             this.btnCloseDialog.UseVisualStyleBackColor = true;
             this.btnCloseDialog.Click += new System.EventHandler(this.btnCloseDialog_Click);
-            // 
-            // btnCreateLogFile
-            // 
-            this.btnCreateLogFile.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCreateLogFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCreateLogFile.Location = new System.Drawing.Point(12, 248);
-            this.btnCreateLogFile.Name = "btnCreateLogFile";
-            this.btnCreateLogFile.Size = new System.Drawing.Size(200, 28);
-            this.btnCreateLogFile.TabIndex = 0;
-            this.btnCreateLogFile.Text = "Auswertung Exportieren";
-            this.btnCreateLogFile.UseVisualStyleBackColor = true;
-            this.btnCreateLogFile.Click += new System.EventHandler(this.btnCreateLogFile_Click);
             // 
             // label1
             // 
@@ -299,7 +286,6 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnCreateLogFile);
             this.Controls.Add(this.btnCloseDialog);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -316,7 +302,6 @@
         #endregion
 
         private System.Windows.Forms.Button btnCloseDialog;
-        private System.Windows.Forms.Button btnCreateLogFile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblResultTitle;
         private System.Windows.Forms.Label label3;
