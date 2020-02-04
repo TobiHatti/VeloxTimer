@@ -25,6 +25,29 @@ namespace VeloxTimer
 
         private void LoadCategories(bool pInitialLoad)
         {
+            // If the timer gets loaded the first time, check if a category-file exists. 
+            // If not, create one with the default categories
+            if(!File.Exists(CategoryFile))
+            {
+                StreamWriter sw = new StreamWriter(CategoryFile);
+                sw.WriteLine("Coding");
+                sw.WriteLine("Reviews");
+                sw.WriteLine("Support");
+                sw.WriteLine("Meeting");
+                sw.Close();
+            }
+
+            // If the timer gets loaded the first time, check if a log-file exists. 
+            // If not, create one
+            if (!File.Exists(TimerElement.LogFile))
+            {
+                Directory.CreateDirectory(Path.GetDirectoryName(TimerElement.LogFile));
+                using(StreamWriter sw = new StreamWriter(TimerElement.LogFile))
+                {
+                    sw.Close();
+                }
+            }
+
             try
             {
                 // When reloading, remove every control except the main, fixed controls

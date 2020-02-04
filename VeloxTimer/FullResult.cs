@@ -309,7 +309,6 @@ namespace VeloxTimer
                 try
                 {
                     StreamWriter sw = new StreamWriter(sfdSaveExport.FileName);
-                    int i = 0;
                     foreach (KeyValuePair<int, TimerElement> timer in Timers)
                     {
                         if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "All")
