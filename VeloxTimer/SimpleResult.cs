@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskTimer
+namespace VeloxTimer
 {
     public partial class SimpleResult : Form
     {
@@ -19,7 +19,7 @@ namespace TaskTimer
 
         public void SetTimerData(TimerElement pTimer)
         {
-            lblResultTitle.Text = $"Auswertung für Kategorie \"{pTimer.CategoryName}\"";
+            lblResultTitle.Text = $"Evaluation for category \"{pTimer.CategoryName}\"";
 
             lblCumulatedToday.Text = pTimer.GetCumulated(CumulateRange.Today).ToString(@"hh\:mm\:ss");
             lblCumulatedYesterday.Text = pTimer.GetCumulated(CumulateRange.Yesterday).ToString(@"hh\:mm\:ss");

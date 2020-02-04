@@ -1,4 +1,4 @@
-﻿namespace TaskTimer
+﻿namespace VeloxTimer
 {
     partial class VeloxTimer
     {
@@ -44,9 +44,9 @@
             this.lblTitleCurrent.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitleCurrent.Location = new System.Drawing.Point(278, 20);
             this.lblTitleCurrent.Name = "lblTitleCurrent";
-            this.lblTitleCurrent.Size = new System.Drawing.Size(57, 20);
+            this.lblTitleCurrent.Size = new System.Drawing.Size(62, 20);
             this.lblTitleCurrent.TabIndex = 2;
-            this.lblTitleCurrent.Text = "Aktuell";
+            this.lblTitleCurrent.Text = "Current";
             this.lblTitleCurrent.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // cbxTotalTimeSpanSelect
@@ -54,18 +54,18 @@
             this.cbxTotalTimeSpanSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxTotalTimeSpanSelect.FormattingEnabled = true;
             this.cbxTotalTimeSpanSelect.Items.AddRange(new object[] {
-            "Heute",
-            "Gestern",
-            "Diese Woche",
-            "Letzte Woche",
-            "Diesen Monat",
-            "Letzten Monat",
-            "Gesamt"});
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "Total"});
             this.cbxTotalTimeSpanSelect.Location = new System.Drawing.Point(398, 17);
             this.cbxTotalTimeSpanSelect.Name = "cbxTotalTimeSpanSelect";
             this.cbxTotalTimeSpanSelect.Size = new System.Drawing.Size(123, 28);
             this.cbxTotalTimeSpanSelect.TabIndex = 4;
-            this.cbxTotalTimeSpanSelect.Text = "Heute";
+            this.cbxTotalTimeSpanSelect.Text = "Today";
             this.cbxTotalTimeSpanSelect.SelectedValueChanged += new System.EventHandler(this.cbxTotalTimeSpanSelect_SelectedValueChanged);
             // 
             // tmrCurrentUpdater
@@ -82,7 +82,7 @@
             this.btnResults.Name = "btnResults";
             this.btnResults.Size = new System.Drawing.Size(123, 29);
             this.btnResults.TabIndex = 0;
-            this.btnResults.Text = "Auswertung";
+            this.btnResults.Text = "Evaluation";
             this.btnResults.UseVisualStyleBackColor = true;
             this.btnResults.Click += new System.EventHandler(this.btnResults_Click);
             // 
@@ -94,7 +94,7 @@
             this.btnOpenCategoryFile.Name = "btnOpenCategoryFile";
             this.btnOpenCategoryFile.Size = new System.Drawing.Size(101, 29);
             this.btnOpenCategoryFile.TabIndex = 0;
-            this.btnOpenCategoryFile.Text = "Kat. bearb.";
+            this.btnOpenCategoryFile.Text = "Edit Cat.";
             this.btnOpenCategoryFile.UseVisualStyleBackColor = true;
             this.btnOpenCategoryFile.Click += new System.EventHandler(this.btnOpenCategoryFile_Click);
             // 

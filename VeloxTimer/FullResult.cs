@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TaskTimer
+namespace VeloxTimer
 {
     public partial class FullResult : Form
     {
@@ -25,7 +25,7 @@ namespace TaskTimer
         {
             UpdateOverviewDGV();
 
-            cbxCategories.Items.Add("Alle");
+            cbxCategories.Items.Add("All");
 
             StreamReader sr = new StreamReader(VeloxTimer.CategoryFile);
             string category = null;
@@ -54,39 +54,39 @@ namespace TaskTimer
         {
             dgvTimerResult.Columns.Clear();
 
-            dgvTimerResult.Columns.Add("colCategory", "Kategorie");
+            dgvTimerResult.Columns.Add("colCategory", "Category");
 
             if (chbShowDayResults.Checked)
             {
-                dgvTimerResult.Columns.Add("colToday", "Heute");
+                dgvTimerResult.Columns.Add("colToday", "Today");
                 if (chbShowLastPeriods.Checked)
                 {
-                    dgvTimerResult.Columns.Add("colYesterday", "Gestern");
-                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifDay", "Differenz");
+                    dgvTimerResult.Columns.Add("colYesterday", "Yesterday");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifDay", "Difference");
                 }
             }
 
             if (chbShowWeekResults.Checked)
             {
-                dgvTimerResult.Columns.Add("colThisWeek", "Diese Woche");
+                dgvTimerResult.Columns.Add("colThisWeek", "This Week");
                 if (chbShowLastPeriods.Checked)
                 {
-                    dgvTimerResult.Columns.Add("colLastWeek", "Letzte Woche");
-                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifWeek", "Differenz");
+                    dgvTimerResult.Columns.Add("colLastWeek", "Last Week");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifWeek", "Difference");
                 }
             }
 
             if (chbShowMonthResults.Checked)
             {
-                dgvTimerResult.Columns.Add("colThisMonth", "Diesen Monat");
+                dgvTimerResult.Columns.Add("colThisMonth", "This Month");
                 if (chbShowLastPeriods.Checked)
                 {
-                    dgvTimerResult.Columns.Add("colLastMonth", "Letzten Monat");
-                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifMonth", "Differenz");
+                    dgvTimerResult.Columns.Add("colLastMonth", "Last Month");
+                    if (chbShowDif.Checked) dgvTimerResult.Columns.Add("colDifMonth", "Difference");
                 }
             }
 
-            if (chbShowTotalResults.Checked) dgvTimerResult.Columns.Add("colTotal", "Gesamt");
+            if (chbShowTotalResults.Checked) dgvTimerResult.Columns.Add("colTotal", "Total");
 
         }
 
@@ -170,10 +170,10 @@ namespace TaskTimer
         {
             dgvResultDetail.Columns.Clear();
 
-            dgvResultDetail.Columns.Add("colDate", "Datum");
-            dgvResultDetail.Columns.Add("colStartdate", "Startzeit");
-            dgvResultDetail.Columns.Add("colEnddate", "Endzeit");
-            dgvResultDetail.Columns.Add("colDuration", "Dauer");
+            dgvResultDetail.Columns.Add("colDate", "Date");
+            dgvResultDetail.Columns.Add("colStartdate", "Start");
+            dgvResultDetail.Columns.Add("colEnddate", "End");
+            dgvResultDetail.Columns.Add("colDuration", "Duration");
         }
 
         private void FillDetailDGV()
@@ -181,7 +181,7 @@ namespace TaskTimer
             int i = 0;
             foreach(KeyValuePair<int, TimerElement> timer in Timers)
             {
-                if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "Alle")
+                if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "All")
                 {
 
                     DataGridViewCellStyle totalStyle = new DataGridViewCellStyle
@@ -190,15 +190,15 @@ namespace TaskTimer
                         Font = new Font(dgvResultDetail.Font, FontStyle.Bold)
                     };
 
-                    if(cbxCategories.Text == "Alle")
+                    if(cbxCategories.Text == "All")
                         dgvResultDetail.Rows.Add(
                                 timer.Value.CategoryName,
-                                "", "Gesamt:",
+                                "", "Total:",
                                 timer.Value.GetCumulated(CumulateRange.Total)
                             );
                     else
                         dgvResultDetail.Rows.Add(
-                                "Gesamt:",
+                                "Total:",
                                 "", "",
                                 timer.Value.GetCumulated(CumulateRange.Total)
                             );
@@ -256,13 +256,13 @@ namespace TaskTimer
         private void btnExportOverview_Click(object sender, EventArgs e)
         {
             sfdSaveExport.FileName = "TaskOverview.csv";
-            sfdSaveExport.Title = "Übersicht Exportieren";
+            sfdSaveExport.Title = "Export Overview";
             if(sfdSaveExport.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     StreamWriter sw = new StreamWriter(sfdSaveExport.FileName);
-                    sw.WriteLine($"Kategorie;Heute;Gestern;Differenz;Diese Woche;Letzte Woche;Differenz;Diesen Monat;Letzten Monat;Differenz;Gesammt");
+                    sw.WriteLine($"Category;Today;Yesterday;Difference;This Week;Last Week;Difference;This Month;Last Month;Difference;Total");
                     foreach (KeyValuePair<int, TimerElement> timer in Timers)
                     {
                         sw.WriteLine(
@@ -284,7 +284,7 @@ namespace TaskTimer
                 }
                 catch(Exception)
                 {
-                    MessageBox.Show("Datei konnte nicht gespeichert werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Could not save file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -303,19 +303,18 @@ namespace TaskTimer
         private void btnExportDetail_Click(object sender, EventArgs e)
         {
             sfdSaveExport.FileName = "TaskDetail.csv";
-            sfdSaveExport.Title = "Detailansicht Exportieren";
+            sfdSaveExport.Title = "Export Detailed View";
             if (sfdSaveExport.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
                     StreamWriter sw = new StreamWriter(sfdSaveExport.FileName);
-                    int i = 0;
                     foreach (KeyValuePair<int, TimerElement> timer in Timers)
                     {
-                        if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "Alle")
+                        if (cbxCategories.Text != null && timer.Value.CategoryName == cbxCategories.Text || cbxCategories.Text == "All")
                         {
-                            sw.WriteLine($"Datum;Startzeit;Endzeit;Dauer");
-                            sw.WriteLine($"{timer.Value.CategoryName};;Gesamt:;{timer.Value.GetCumulated(CumulateRange.Total)}");
+                            sw.WriteLine($"Date;Start;End;Duration");
+                            sw.WriteLine($"{timer.Value.CategoryName};;Total:;{timer.Value.GetCumulated(CumulateRange.Total)}");
 
                             foreach (Tuple<DateTime, DateTime, TimeSpan> logEntry in timer.Value.GetFullLog())
                                 sw.WriteLine($"{logEntry.Item1.ToString("ddd, dd.MM.yyyy")};{logEntry.Item1.ToString("hh:mm:ss")};{logEntry.Item2.ToString("hh:mm:ss")};{logEntry.Item3.ToString()}");
@@ -326,7 +325,7 @@ namespace TaskTimer
                 }
                 catch(Exception)
                 {
-                    MessageBox.Show("Datei konnte nicht gespeichert werden!", "Fehler", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Could not save file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

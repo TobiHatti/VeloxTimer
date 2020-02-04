@@ -1,4 +1,4 @@
-﻿namespace TaskTimer
+﻿namespace VeloxTimer
 {
     partial class FullResult
     {
@@ -117,7 +117,7 @@
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage1.Size = new System.Drawing.Size(732, 256);
             this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Übersicht";
+            this.tabPage1.Text = "Overview";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnExportOverview
@@ -127,7 +127,7 @@
             this.btnExportOverview.Name = "btnExportOverview";
             this.btnExportOverview.Size = new System.Drawing.Size(108, 29);
             this.btnExportOverview.TabIndex = 2;
-            this.btnExportOverview.Text = "Exportieren";
+            this.btnExportOverview.Text = "Export";
             this.btnExportOverview.UseVisualStyleBackColor = true;
             this.btnExportOverview.Click += new System.EventHandler(this.btnExportOverview_Click);
             // 
@@ -137,11 +137,11 @@
             this.chbShowTotalResults.Checked = true;
             this.chbShowTotalResults.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbShowTotalResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbShowTotalResults.Location = new System.Drawing.Point(139, 29);
+            this.chbShowTotalResults.Location = new System.Drawing.Point(149, 29);
             this.chbShowTotalResults.Name = "chbShowTotalResults";
-            this.chbShowTotalResults.Size = new System.Drawing.Size(129, 24);
+            this.chbShowTotalResults.Size = new System.Drawing.Size(125, 24);
             this.chbShowTotalResults.TabIndex = 1;
-            this.chbShowTotalResults.Text = "Gesamtbillanz";
+            this.chbShowTotalResults.Text = "Total Balance";
             this.chbShowTotalResults.UseVisualStyleBackColor = true;
             this.chbShowTotalResults.CheckedChanged += new System.EventHandler(this.chbShowTotalResults_CheckedChanged);
             // 
@@ -151,11 +151,11 @@
             this.chbShowMonthResults.Checked = true;
             this.chbShowMonthResults.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbShowMonthResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbShowMonthResults.Location = new System.Drawing.Point(139, 6);
+            this.chbShowMonthResults.Location = new System.Drawing.Point(149, 6);
             this.chbShowMonthResults.Name = "chbShowMonthResults";
-            this.chbShowMonthResults.Size = new System.Drawing.Size(125, 24);
+            this.chbShowMonthResults.Size = new System.Drawing.Size(145, 24);
             this.chbShowMonthResults.TabIndex = 1;
-            this.chbShowMonthResults.Text = "Monatsbillanz";
+            this.chbShowMonthResults.Text = "Monthly Balance";
             this.chbShowMonthResults.UseVisualStyleBackColor = true;
             this.chbShowMonthResults.CheckedChanged += new System.EventHandler(this.chbShowMonthResults_CheckedChanged);
             // 
@@ -167,9 +167,9 @@
             this.chbShowWeekResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbShowWeekResults.Location = new System.Drawing.Point(6, 29);
             this.chbShowWeekResults.Name = "chbShowWeekResults";
-            this.chbShowWeekResults.Size = new System.Drawing.Size(131, 24);
+            this.chbShowWeekResults.Size = new System.Drawing.Size(141, 24);
             this.chbShowWeekResults.TabIndex = 1;
-            this.chbShowWeekResults.Text = "Wochenbillanz";
+            this.chbShowWeekResults.Text = "Weekly Balance";
             this.chbShowWeekResults.UseVisualStyleBackColor = true;
             this.chbShowWeekResults.CheckedChanged += new System.EventHandler(this.chbShowWeekResults_CheckedChanged);
             // 
@@ -181,9 +181,9 @@
             this.chbShowDayResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chbShowDayResults.Location = new System.Drawing.Point(6, 6);
             this.chbShowDayResults.Name = "chbShowDayResults";
-            this.chbShowDayResults.Size = new System.Drawing.Size(116, 24);
+            this.chbShowDayResults.Size = new System.Drawing.Size(124, 24);
             this.chbShowDayResults.TabIndex = 1;
-            this.chbShowDayResults.Text = "Tagesbillanz";
+            this.chbShowDayResults.Text = "Daily Balance";
             this.chbShowDayResults.UseVisualStyleBackColor = true;
             this.chbShowDayResults.CheckedChanged += new System.EventHandler(this.chbShowDayResults_CheckedChanged);
             // 
@@ -191,11 +191,11 @@
             // 
             this.chbShowLastPeriods.AutoSize = true;
             this.chbShowLastPeriods.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbShowLastPeriods.Location = new System.Drawing.Point(283, 6);
+            this.chbShowLastPeriods.Location = new System.Drawing.Point(303, 6);
             this.chbShowLastPeriods.Name = "chbShowLastPeriods";
-            this.chbShowLastPeriods.Size = new System.Drawing.Size(231, 24);
+            this.chbShowLastPeriods.Size = new System.Drawing.Size(187, 24);
             this.chbShowLastPeriods.TabIndex = 1;
-            this.chbShowLastPeriods.Text = "Letztes Zeitfenster anzeigen";
+            this.chbShowLastPeriods.Text = "Show last time window";
             this.chbShowLastPeriods.UseVisualStyleBackColor = true;
             this.chbShowLastPeriods.CheckedChanged += new System.EventHandler(this.chbShowLastPeriods_CheckedChanged);
             // 
@@ -204,11 +204,11 @@
             this.chbShowDif.AutoSize = true;
             this.chbShowDif.Enabled = false;
             this.chbShowDif.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbShowDif.Location = new System.Drawing.Point(283, 29);
+            this.chbShowDif.Location = new System.Drawing.Point(303, 29);
             this.chbShowDif.Name = "chbShowDif";
-            this.chbShowDif.Size = new System.Drawing.Size(180, 24);
+            this.chbShowDif.Size = new System.Drawing.Size(146, 24);
             this.chbShowDif.TabIndex = 1;
-            this.chbShowDif.Text = "Differenzen anzeigen";
+            this.chbShowDif.Text = "Show Difference";
             this.chbShowDif.UseVisualStyleBackColor = true;
             this.chbShowDif.CheckedChanged += new System.EventHandler(this.chbShowDif_CheckedChanged);
             // 
@@ -222,7 +222,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(732, 256);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Detailansicht";
+            this.tabPage2.Text = "Detailed View";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnExportDetail
@@ -232,7 +232,7 @@
             this.btnExportDetail.Name = "btnExportDetail";
             this.btnExportDetail.Size = new System.Drawing.Size(108, 29);
             this.btnExportDetail.TabIndex = 3;
-            this.btnExportDetail.Text = "Exportieren";
+            this.btnExportDetail.Text = "Export";
             this.btnExportDetail.UseVisualStyleBackColor = true;
             this.btnExportDetail.Click += new System.EventHandler(this.btnExportDetail_Click);
             // 
@@ -285,7 +285,7 @@
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(108, 29);
             this.btnClose.TabIndex = 2;
-            this.btnClose.Text = "Schließen";
+            this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
@@ -305,7 +305,7 @@
             this.Name = "FullResult";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Auswertung";
+            this.Text = "Evaluation";
             this.Load += new System.EventHandler(this.FullResult_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTimerResult)).EndInit();
             this.tabControll.ResumeLayout(false);
