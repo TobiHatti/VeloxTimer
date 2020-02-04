@@ -146,7 +146,7 @@ namespace VeloxTimer
             }
             catch (Exception)
             {
-                MessageBox.Show("Ein Fehler ist beim Laden der Kategorien aufgetreten.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An error occured whilst trying to load the categories", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -167,31 +167,31 @@ namespace VeloxTimer
             {
                 switch (cbxTotalTimeSpanSelect.SelectedItem.ToString())
                 {
-                    case "Heute":
+                    case "Today":
                         (this.Controls.Find($"lblTotalTime{timer.Key}",false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.Today).ToString(@"hh\:mm\:ss");
                         break;
-                    case "Gestern":
+                    case "Yesterday":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.Yesterday).ToString(@"hh\:mm\:ss");
                         break;
-                    case "Diese Woche":
+                    case "This Week":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.ThisWeek).ToString(@"d\:hh\:mm\:ss");
                         break;
-                    case "Letzte Woche":
+                    case "Last Week":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.LastWeek).ToString(@"d\:hh\:mm\:ss");
                         break;
-                    case "Diesen Monat":
+                    case "This Month":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.ThisMonth).ToString(@"d\:hh\:mm\:ss");
                         break;
-                    case "Letzten Monat":
+                    case "Last Month":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.LastMonth).ToString(@"d\:hh\:mm\:ss");
                         break;
-                    case "Gesamt":
+                    case "Total":
                         (this.Controls.Find($"lblTotalTime{timer.Key}", false)[0] as Label).Text =
                             timer.Value.GetCumulated(CumulateRange.Total).ToString(@"d\:hh\:mm\:ss");
                         break;
@@ -268,7 +268,7 @@ namespace VeloxTimer
             foreach (KeyValuePair<int, TimerElement> timer in timers)
                 if (timer.Value.IsRunning) timerActive = true;
 
-            if (!timerActive || (timerActive && MessageBox.Show("Mindestens 1 Timer läuft gerade. Sollen alle laufenden Timer gestoppt werden um zu aktualisieren?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+            if (!timerActive || (timerActive && MessageBox.Show("At least 1 timer is still running. Do you want to stop all running timers and refresh?", "Info", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
             {
                 if(timerActive)
                 {
@@ -306,7 +306,7 @@ namespace VeloxTimer
 
             if(timerActive)
             {
-                var result = MessageBox.Show("Es läuft noch mindestens 1 Timer. Wollen Sie alle noch laufenden Timer stoppen und speichern?", "Timer laufen noch", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                var result = MessageBox.Show("At least 1 timer is still running. Do you want to stop all running timers and save?", "Timer still running", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
 
                 if (result == DialogResult.Cancel) e.Cancel = true;
 

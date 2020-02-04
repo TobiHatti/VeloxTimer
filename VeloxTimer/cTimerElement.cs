@@ -55,7 +55,7 @@ namespace VeloxTimer
             }
             catch(Exception)
             {
-                MessageBox.Show($"Der Wert konnte nicht gespeichert werden, da die Datei \"{LogFile}\" nicht geladen werden konnte. Schließen Sie die Datei und versuchen Sie es erneut.", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
             }
         }
 
@@ -127,7 +127,7 @@ namespace VeloxTimer
             catch (Exception)
             {
                 if (!alertShown)
-                    MessageBox.Show($"Die Datei \"{LogFile}\" konnte nicht geladen werden. Schließen Sie die Datei und versuchen Sie es erneut.", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
 
                 alertShown = true;
 
@@ -166,7 +166,7 @@ namespace VeloxTimer
             catch (Exception)
             {
                 if (!alertShown)
-                    MessageBox.Show($"Die Datei \"{LogFile}\" konnte nicht geladen werden. Schließen Sie die Datei und versuchen Sie es erneut.", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
 
                 alertShown = true;
 

@@ -59,7 +59,7 @@
             this.btnCloseDialog.Name = "btnCloseDialog";
             this.btnCloseDialog.Size = new System.Drawing.Size(97, 28);
             this.btnCloseDialog.TabIndex = 0;
-            this.btnCloseDialog.Text = "Schließen";
+            this.btnCloseDialog.Text = "Close";
             this.btnCloseDialog.UseVisualStyleBackColor = true;
             this.btnCloseDialog.Click += new System.EventHandler(this.btnCloseDialog_Click);
             // 
@@ -70,7 +70,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 23);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Heute:";
+            this.label1.Text = "Today:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblResultTitle
@@ -82,7 +82,7 @@
             this.lblResultTitle.Name = "lblResultTitle";
             this.lblResultTitle.Size = new System.Drawing.Size(345, 23);
             this.lblResultTitle.TabIndex = 1;
-            this.lblResultTitle.Text = "Auswertung für Kategorie \"Sample\"";
+            this.lblResultTitle.Text = "Evaluation for Category \"Sample\"";
             this.lblResultTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label3
@@ -92,7 +92,7 @@
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(121, 23);
             this.label3.TabIndex = 1;
-            this.label3.Text = "Diese Woche:";
+            this.label3.Text = "This Week:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label4
@@ -103,7 +103,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(121, 16);
             this.label4.TabIndex = 1;
-            this.label4.Text = "Letzten Monat:";
+            this.label4.Text = "Last Month:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label5
@@ -113,7 +113,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(121, 23);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Gesamt:";
+            this.label5.Text = "Total:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCumulatedToday
@@ -165,7 +165,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(121, 16);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Letzte Woche:";
+            this.label2.Text = "Last Week:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // label6
@@ -175,7 +175,7 @@
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(121, 23);
             this.label6.TabIndex = 1;
-            this.label6.Text = "Diesen Monat:";
+            this.label6.Text = "This Month:";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblCumulatedLastWeek
@@ -206,7 +206,7 @@
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(121, 23);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Differenz:";
+            this.label7.Text = "Difference:";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblDifDay
@@ -248,7 +248,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(121, 16);
             this.label11.TabIndex = 1;
-            this.label11.Text = "Gestern:";
+            this.label11.Text = "Yesterday:";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // lblDifMonth
@@ -294,7 +294,7 @@
             this.Name = "SimpleResult";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Auswertung";
+            this.Text = "Evaluation";
             this.ResumeLayout(false);
 
         }
