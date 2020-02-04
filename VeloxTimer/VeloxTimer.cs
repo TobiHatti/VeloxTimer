@@ -16,7 +16,7 @@ namespace VeloxTimer
 
     public partial class VeloxTimer : Form
     {
-        public static readonly string CategoryFile = @"Categories.txt";
+        public static readonly string CategoryFile = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"VeloxTimer\Categories.txt");
         private readonly Dictionary<int, TimerElement> timers = new Dictionary<int, TimerElement>();
         public VeloxTimer()
         {
@@ -29,6 +29,8 @@ namespace VeloxTimer
             // If not, create one with the default categories
             if(!File.Exists(CategoryFile))
             {
+                Directory.CreateDirectory(Path.GetDirectoryName(CategoryFile));
+
                 StreamWriter sw = new StreamWriter(CategoryFile);
                 sw.WriteLine("Coding");
                 sw.WriteLine("Reviews");

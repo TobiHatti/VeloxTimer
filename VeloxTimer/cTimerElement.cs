@@ -29,7 +29,7 @@ namespace VeloxTimer
 
         private static bool alertShown = false;
 
-        public static string LogFile { get; set; } = @"Logs\TaskTimerLog.csv";
+        public static string LogFile { get; set; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), @"VeloxTimer\Logs\TaskTimerLog.csv");
 
         public TimerElement(string pCategoryName)
         {
@@ -55,7 +55,7 @@ namespace VeloxTimer
             }
             catch(Exception)
             {
-                MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. Try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
             }
         }
 
@@ -127,7 +127,7 @@ namespace VeloxTimer
             catch (Exception)
             {
                 if (!alertShown)
-                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. Try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
 
                 alertShown = true;
 
@@ -166,7 +166,7 @@ namespace VeloxTimer
             catch (Exception)
             {
                 if (!alertShown)
-                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
+                    MessageBox.Show($"The value could not be saved, since the file \"{LogFile}\" could not be loaded. Try closing the file and try again.", "Could not load file", MessageBoxButtons.OK, MessageBoxIcon.Warning); ;
 
                 alertShown = true;
 
