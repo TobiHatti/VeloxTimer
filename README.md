@@ -1,3 +1,5 @@
+<img align="right" width="80" height="80" src="https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxTimer/VeloxTimerLogo.png">
+
 # VeloxTimer
 
 [![GitHub](https://img.shields.io/github/license/TobiHatti/VeloxTimer)](https://opensource.org/licenses/GPL-3.0)
