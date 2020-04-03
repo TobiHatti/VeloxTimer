@@ -16,5 +16,5 @@ VeloxTimer is a minimalistic Task-Timer for tracking and analysing your workflow
 ![image](https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxSampleSimpleEval.jpg)
 ![image](https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxSampleFullEval.jpg)
 
-## Downloads:
-See [releases](https://github.com/TobiHatti/VeloxTimer/releases)
+## Download:
+Get the latest release [here](https://github.com/TobiHatti/VeloxTimer/releases)
