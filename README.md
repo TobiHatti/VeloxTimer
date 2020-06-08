@@ -1,4 +1,4 @@
-<img align="right" width="80" height="80" src="https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxTimer/VeloxTimerLogo.png">
+<img align="right" width="80" height="80" data-rmimg src="https://endev.at/content/projects/VeloxTimer/VeloxTimer_Logo_128.png">
 
 # VeloxTimer
 
@@ -9,12 +9,16 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer/issues)
 [![GitHub language count](https://img.shields.io/github/languages/count/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer)
 
-![image](https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxSample.jpg)
+![image](https://endev.at/content/projects/VeloxTimer/VeloxTimer_Banner_1080.png)
 
 VeloxTimer is a minimalistic Task-Timer for tracking and analysing your workflows.
 
-![image](https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxSampleSimpleEval.jpg)
-![image](https://github.com/TobiHatti/VeloxTimer/blob/master/VeloxSampleFullEval.jpg)
+![image](https://endev.at/content/projects/VeloxTimer/projectImages/VeloxSample.jpg)
+
+Simple and Advanced Evaluation:
+
+![image](https://endev.at/content/projects/VeloxTimer/projectImages/VeloxSampleSimpleEval.jpg)
+![image](https://endev.at/content/projects/VeloxTimer/projectImages/VeloxSampleFullEval.jpg)
 
 ## Download:
 Get the latest release [here](https://github.com/TobiHatti/VeloxTimer/releases)
