@@ -9,7 +9,7 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer/issues)
 [![GitHub language count](https://img.shields.io/github/languages/count/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer)
 
-![image](https://endev.at/content/projects/VeloxTimer/VeloxTimer_Banner_1080.png)
+![image](https://endev.at/content/projects/VeloxTimer/VeloxTimer_Banner_300.png)
 
 VeloxTimer is a minimalistic Task-Timer for tracking and analysing your workflows.
 
