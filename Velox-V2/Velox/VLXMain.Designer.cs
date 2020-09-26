@@ -107,7 +107,7 @@
             // btnManageCategories
             // 
             this.btnManageCategories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnManageCategories.Location = new System.Drawing.Point(12, 159);
+            this.btnManageCategories.Location = new System.Drawing.Point(12, 142);
             this.btnManageCategories.Name = "btnManageCategories";
             this.btnManageCategories.Size = new System.Drawing.Size(155, 32);
             this.btnManageCategories.TabIndex = 3;
@@ -117,7 +117,7 @@
             // btnDetailedEvaluation
             // 
             this.btnDetailedEvaluation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnDetailedEvaluation.Location = new System.Drawing.Point(173, 159);
+            this.btnDetailedEvaluation.Location = new System.Drawing.Point(173, 142);
             this.btnDetailedEvaluation.Name = "btnDetailedEvaluation";
             this.btnDetailedEvaluation.Size = new System.Drawing.Size(155, 32);
             this.btnDetailedEvaluation.TabIndex = 3;
@@ -127,7 +127,7 @@
             // btnMinimize
             // 
             this.btnMinimize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimize.Location = new System.Drawing.Point(583, 159);
+            this.btnMinimize.Location = new System.Drawing.Point(583, 142);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(90, 32);
             this.btnMinimize.TabIndex = 3;
@@ -137,7 +137,7 @@
             // btnExport
             // 
             this.btnExport.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnExport.Location = new System.Drawing.Point(332, 159);
+            this.btnExport.Location = new System.Drawing.Point(332, 142);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(71, 32);
             this.btnExport.TabIndex = 4;
@@ -148,7 +148,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(685, 203);
+            this.ClientSize = new System.Drawing.Size(685, 186);
             this.Controls.Add(this.btnExport);
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnDetailedEvaluation);
@@ -172,6 +172,7 @@
             this.Style.TitleBar.BackColor = System.Drawing.Color.Bisque;
             this.Style.TitleBar.BottomBorderColor = System.Drawing.Color.Bisque;
             this.Text = "Velox Timer";
+            this.Load += new System.EventHandler(this.VLXMain_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxTopShade)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
