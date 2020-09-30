@@ -13,7 +13,7 @@ namespace Velox
 {
     static class VLXLib
     {
-        public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Endev", "Velox", "timestamps.db");
+        public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Endev", "Velox", "timestamps.db");
 
         public static void SetFormStyle(SfForm form)
         {
@@ -39,7 +39,7 @@ namespace Velox
                         sql.ExecuteNonQuery(@"CREATE TABLE 'categories' ('ID' INTEGER,'CategoryName' TEXT,'CategoryDescription' TEXT,PRIMARY KEY('ID' AUTOINCREMENT));");
 
                         // Creating table "timestamps"
-                        sql.ExecuteNonQuery("@CREATE TABLE 'timestamps' ('ID' INTEGER, 'CategoryID' INTEGER, 'StartTime' TEXT, 'EndTime' TEXT, PRIMARY KEY('ID' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery(@"CREATE TABLE 'timestamps' ('ID' INTEGER, 'CategoryID' INTEGER, 'StartTime' TEXT, 'EndTime' TEXT, PRIMARY KEY('ID' AUTOINCREMENT));");
 
                         sql.TransactionCommit();
                     }

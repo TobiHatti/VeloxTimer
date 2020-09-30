@@ -27,3 +27,10 @@ C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\obj\Debug\Velox.exe
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\obj\Debug\Velox.pdb
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\Syncfusion.Core.WinForms.dll
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\Syncfusion.Core.WinForms.xml
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\System.Data.SQLite.dll
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLBase.dll
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLite.dll
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\System.Data.SQLite.xml
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\System.Data.SQLite.dll.config
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLBase.xml
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLite.xml

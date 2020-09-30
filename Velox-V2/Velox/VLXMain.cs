@@ -26,7 +26,7 @@ namespace Velox
         private void VLXMain_Load(object sender, EventArgs e)
         {
             if (!File.Exists(VLXLib.ConfigFileName))
-                if (!VLXLib.CreateDBFile()) VLXLib.ManagedException("*** Could not  ***");
+                if (!VLXLib.CreateDBFile()) throw new VLXException("Could not initialize VLX-Database. Please try again later or contact your system administrator");
 
             sql = new WrapSQLite(VLXLib.ConfigFileName);
 
