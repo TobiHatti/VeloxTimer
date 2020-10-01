@@ -1,6 +1,7 @@
 ﻿using Syncfusion.WinForms.Controls;
 using System;
 using System.Collections.Generic;
+using System.Data.SQLite;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -59,7 +60,40 @@ namespace Velox
 
             return success;
         }
+        public static List<VLXCategory> LoadVLXData() => FillVLXTimestamps(LoadVLXCategories());
+
+        public static List<VLXCategory> LoadVLXCategories()
+        {
+            try
+            {
+                using (WrapSQLite sql = new WrapSQLite(ConfigFileName))
+                {
+                    List<VLXCategory> categories = new List<VLXCategory>();
+
+                    sql.Open();
+
+                    using (SQLiteDataReader reader = (SQLiteDataReader)sql.ExecuteQuery("SELECT * FROM categoties"))
+                    {
+                        categories.Add(new VLXCategory(Convert.ToInt32(reader["ID"])) { 
+                            Name = Convert.ToString(reader["Name"]),
+                            Description = Convert.ToString(reader[""])
+                        });
+                    }
+
+                    sql.Close();
+
+                    return categories;
+                }
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public static List<VLXCategory> FillVLXTimestamps(List<VLXCategory> pUnfilledCategoryList)
+        {
+            return null;
+        }
     }
-
-
 }

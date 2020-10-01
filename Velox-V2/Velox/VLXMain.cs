@@ -20,7 +20,7 @@ namespace Velox
         {
             InitializeComponent();
             VLXLib.SetFormStyle(this);
-
+            MessageBox.Show($"{VLXDB.Category.Self}");
         }
 
         private void VLXMain_Load(object sender, EventArgs e)

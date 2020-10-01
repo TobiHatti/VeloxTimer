@@ -1,0 +1,32 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Velox
+{
+    static class VLXDB
+    {
+
+        public static class Category
+        {
+            public static string Self { get => "category"; }
+
+            public const string ID = "ID";
+            public const string Name = "CategoryName";
+            public const string Description = "CategoryDescription";
+        }
+
+        public static class Timestamps
+        {
+            public static string Self { get => "timestamps"; }
+
+            public const string ID = "ID";
+            public const string CategoryID = "CategoryID";
+            public const string Name = "StartTime";
+            public const string Description = "EndTime";
+        }
+
+    }
+}

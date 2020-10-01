@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="VLXCategory.cs" />
+    <Compile Include="VLXDB.cs" />
     <Compile Include="VLXException.cs" />
     <Compile Include="VLXLib.cs" />
     <Compile Include="VLXMain.cs">
