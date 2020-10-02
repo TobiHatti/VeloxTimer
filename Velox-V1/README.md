@@ -1,4 +1,4 @@
-<img align="right" width="80" height="80" data-rmimg src="https://endev.at/content/projects/VeloxTimer/VeloxTimer_Logo_128.png">
+<img align="right" width="80" height="80" data-rmimg src="https://endev.at/content/projects/VeloxTimer/Velox_Logo.svg">
 
 # VeloxTimer
 
@@ -9,7 +9,7 @@
 [![GitHub issues](https://img.shields.io/github/issues-raw/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer/issues)
 [![GitHub language count](https://img.shields.io/github/languages/count/TobiHatti/VeloxTimer)](https://github.com/TobiHatti/VeloxTimer)
 
-![image](https://endev.at/content/projects/VeloxTimer/VeloxTimer_Banner_300.png)
+![image](https://endev.at/content/projects/VeloxTimer/Velox_Banner_300.svg)
 
 VeloxTimer is a minimalistic Task-Timer for tracking and analysing your workflows.
 
