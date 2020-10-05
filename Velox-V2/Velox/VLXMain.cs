@@ -15,12 +15,12 @@ namespace Velox
     public partial class VLXMain : SfForm
     {
         private WrapSQLite sql;
+        private List<VLXCategory> categories = null;
 
         public VLXMain()
         {
             InitializeComponent();
             VLXLib.SetFormStyle(this);
-            MessageBox.Show($"{VLXDB.Category.Self}");
         }
 
         private void VLXMain_Load(object sender, EventArgs e)
@@ -30,7 +30,7 @@ namespace Velox
 
             sql = new WrapSQLite(VLXLib.ConfigFileName);
 
-            
+            categories = VLXLib.LoadVLXData();
         }
     }
 }

@@ -14,7 +14,9 @@ namespace Velox
 {
     static class VLXLib
     {
-        public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Endev", "Velox", "timestamps.db");
+        public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Endev", "Velox", "vlxdata.db");
+
+        public static string GlobalErrorReport { get; set; } = "";
 
         public static void SetFormStyle(SfForm form)
         {
@@ -37,15 +39,16 @@ namespace Velox
                     try
                     {
                         // Creating table "categories"
-                        sql.ExecuteNonQuery(@"CREATE TABLE 'categories' ('ID' INTEGER,'CategoryName' TEXT,'CategoryDescription' TEXT,PRIMARY KEY('ID' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' INTEGER, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT,PRIMARY KEY('{VLXDB.Category.ID}' AUTOINCREMENT));");
 
                         // Creating table "timestamps"
-                        sql.ExecuteNonQuery(@"CREATE TABLE 'timestamps' ('ID' INTEGER, 'CategoryID' INTEGER, 'StartTime' TEXT, 'EndTime' TEXT, PRIMARY KEY('ID' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' INTEGER, '{VLXDB.Timestamps.CategoryID}' INTEGER, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}' AUTOINCREMENT));");
 
                         sql.TransactionCommit();
                     }
-                    catch
+                    catch(Exception ex)
                     {
+                        GlobalErrorReport = ex.Message;
                         success = false;
                         sql.TransactionRollback();
                     }
@@ -53,8 +56,9 @@ namespace Velox
                     sql.Close();
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                GlobalErrorReport = ex.Message;
                 success = false;
             }
 
@@ -72,11 +76,11 @@ namespace Velox
 
                     sql.Open();
 
-                    using (SQLiteDataReader reader = (SQLiteDataReader)sql.ExecuteQuery("SELECT * FROM categoties"))
+                    using (SQLiteDataReader reader = (SQLiteDataReader)sql.ExecuteQuery($"SELECT * FROM {VLXDB.Category.Self}"))
                     {
-                        categories.Add(new VLXCategory(Convert.ToInt32(reader["ID"])) { 
-                            Name = Convert.ToString(reader["Name"]),
-                            Description = Convert.ToString(reader[""])
+                        categories.Add(new VLXCategory(Convert.ToInt32(reader[VLXDB.Category.ID])) { 
+                            Name = Convert.ToString(reader[VLXDB.Category.Name]),
+                            Description = Convert.ToString(reader[VLXDB.Category.Description])
                         });
                     }
 
@@ -85,15 +89,50 @@ namespace Velox
                     return categories;
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                GlobalErrorReport = ex.Message;
                 return null;
             }
         }
 
         public static List<VLXCategory> FillVLXTimestamps(List<VLXCategory> pUnfilledCategoryList)
         {
-            return null;
+            try
+            { 
+                if(pUnfilledCategoryList != null)
+                {
+                    using (WrapSQLite sql = new WrapSQLite(ConfigFileName))
+                    {
+                        sql.Open();
+
+                        for (int i = 0; i < pUnfilledCategoryList.Count; i++)
+                        {
+                            using (SQLiteDataReader reader = (SQLiteDataReader)sql.ExecuteQuery($"SELECT * FROM {VLXDB.Timestamps.Self} WHERE {VLXDB.Timestamps.CategoryID} = ?", pUnfilledCategoryList[i].ID))
+                            {
+                                while(reader.Read())
+                                {
+                                    pUnfilledCategoryList[i].Timestamps.Add(new VLXTimestamp
+                                    {
+                                        StartTime = Convert.ToDateTime(reader[VLXDB.Timestamps.StartTime]),
+                                        EndTime = Convert.ToDateTime(reader[VLXDB.Timestamps.EndTime])
+                                    });
+                                }
+                            }
+                        }
+
+                        sql.Close();
+                    }
+
+                    return pUnfilledCategoryList;
+                }
+                else return null;
+            }
+            catch (Exception ex)
+            {
+                GlobalErrorReport = ex.Message;
+                return null;
+            }
         }
     }
 }

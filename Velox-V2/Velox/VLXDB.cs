@@ -24,8 +24,8 @@ namespace Velox
 
             public const string ID = "ID";
             public const string CategoryID = "CategoryID";
-            public const string Name = "StartTime";
-            public const string Description = "EndTime";
+            public const string StartTime = "StartTime";
+            public const string EndTime = "EndTime";
         }
 
     }

@@ -15,6 +15,6 @@ namespace Velox
         public VLXException(string message, Exception innerException) : base(ExceptionFormater(message), innerException) { }
 
         private static string ExceptionFormater(string message)
-            => string.Format("*** VLX-Error: {0} ***", message);
+            => string.Format("*** VLX-Error: {0} *** \r\n\r\nError-Log:\r\n{1}", message, VLXLib.GlobalErrorReport);
     }
 }
