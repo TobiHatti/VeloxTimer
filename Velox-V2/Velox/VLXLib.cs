@@ -16,7 +16,7 @@ namespace Velox
     {
         public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Endev", "Velox", "vlxdata.db");
 
-        public static string GlobalErrorReport { get; set; } = "";
+        
 
         public static void SetFormStyle(SfForm form)
         {
@@ -48,7 +48,7 @@ namespace Velox
                     }
                     catch(Exception ex)
                     {
-                        GlobalErrorReport = ex.Message;
+                        VLXException.GlobalErrorReport = ex.Message;
                         success = false;
                         sql.TransactionRollback();
                     }
@@ -58,7 +58,7 @@ namespace Velox
             }
             catch (Exception ex)
             {
-                GlobalErrorReport = ex.Message;
+                VLXException.GlobalErrorReport = ex.Message;
                 success = false;
             }
 
@@ -95,7 +95,7 @@ namespace Velox
             }
             catch (Exception ex)
             {
-                GlobalErrorReport = ex.Message;
+                VLXException.GlobalErrorReport = ex.Message;
                 return null;
             }
         }
@@ -134,117 +134,8 @@ namespace Velox
             }
             catch (Exception ex)
             {
-                GlobalErrorReport = ex.Message;
+                VLXException.GlobalErrorReport = ex.Message;
                 return null;
-            }
-        }
-
-        public static void UpdateControls(SfForm pForm, Control pParentControl, List<VLXCategory> pCategories)
-        {
-            int topOffset = 0;
-            int labelExtraOffset = 6;
-            int rowHeight = 38;
-            int blankContentHeight = 120;
-            int minWindowHeight = 220;
-            int maxWindowHeight = 800;
-
-            int verticalOffset = -5;
-
-            if (pCategories.Count > 0)
-            {
-                int i = 0;
-                foreach (VLXCategory category in pCategories)
-                {
-                    // Category Label
-                    pParentControl.Controls.Add(new Label()
-                    {
-                        Text = category.Name,
-                        Location = new Point(0 + verticalOffset, topOffset + i * rowHeight + labelExtraOffset),
-                        AutoSize = false,
-                        Size = new Size(206, 21),
-                        TextAlign = ContentAlignment.TopRight,
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left
-                    });
-
-                    // Current Session Label
-                    pParentControl.Controls.Add(new Label()
-                    {
-                        Text = "00:00:00",
-                        Location = new Point(328 + verticalOffset, topOffset + i * rowHeight + labelExtraOffset),
-                        AutoSize = false,
-                        Size = new Size(106, 21),
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left
-                    });
-
-                    // Total Time Label
-                    pParentControl.Controls.Add(new Label()
-                    {
-                        Text = "00:00:00",
-                        Location = new Point(480 + verticalOffset, topOffset + i * rowHeight + labelExtraOffset),
-                        AutoSize = false,
-                        Size = new Size(163, 21),
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left
-                    });
-
-                    // Status Picturebox
-                    pParentControl.Controls.Add(new PictureBox()
-                    {
-                        Location = new Point(293 + verticalOffset, topOffset + i * rowHeight + 1),
-                        Size = new Size(14, 30),
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                        BackColor = Color.Red
-                    });
-
-                    // Start/Stop Button
-                    pParentControl.Controls.Add(new Button()
-                    {
-                        Text = "Start",
-                        Location = new Point(212 + verticalOffset, topOffset + i * rowHeight),
-                        Size = new Size(83, 32),
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                        BackColor = Color.Gainsboro
-                    });
-
-                    // Evaluation Button
-                    pParentControl.Controls.Add(new Button()
-                    {
-                        Text = "...",
-                        Location = new Point(649 + verticalOffset, topOffset + i * rowHeight),
-                        Size = new Size(36, 32),
-                        Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                        BackColor = Color.Gainsboro
-                    });
-
-                    i++;
-                }
-
-                pForm.ClientSize = new Size(pForm.ClientSize.Width, Math.Min(Math.Max(blankContentHeight + i * rowHeight, minWindowHeight), maxWindowHeight));
-            }
-            else
-            {
-                pForm.ClientSize = new Size(pForm.ClientSize.Width, 300);
-
-                // No-Categories Label
-                pParentControl.Controls.Add(new Label()
-                {
-                    Font = new Font("Leelawadee UI Semilight", 18),
-                    Text = "No categories to display.",
-                    Location = new Point(3, 15),
-                    AutoSize = false,
-                    Size = new Size(679, 36),
-                    TextAlign = ContentAlignment.MiddleCenter,
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left
-                });
-
-                // Add-Category Button
-                pParentControl.Controls.Add(new Button()
-                {
-                    Text = "Click here to create a new category!",
-                    Location = new Point(265, 60),
-                    Size = new Size(158, 61),
-                    Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                    BackColor = Color.Gainsboro
-                });
             }
         }
     }

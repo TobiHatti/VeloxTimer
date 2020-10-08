@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(VLXMain));
             this.pbxTopShade = new System.Windows.Forms.PictureBox();
             this.cbxTotalTimespan = new System.Windows.Forms.ComboBox();
@@ -40,6 +41,7 @@
             this.btnExport = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlContentPanel = new System.Windows.Forms.Panel();
+            this.tmrUpdateSessions = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxTopShade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -113,6 +115,7 @@
             this.btnManageCategories.TabIndex = 3;
             this.btnManageCategories.Text = "Manage Categories";
             this.btnManageCategories.UseVisualStyleBackColor = true;
+            this.btnManageCategories.Click += new System.EventHandler(this.btnManageCategories_Click);
             // 
             // btnDetailedEvaluation
             // 
@@ -123,6 +126,7 @@
             this.btnDetailedEvaluation.TabIndex = 3;
             this.btnDetailedEvaluation.Text = "Detailed Evaluation";
             this.btnDetailedEvaluation.UseVisualStyleBackColor = true;
+            this.btnDetailedEvaluation.Click += new System.EventHandler(this.btnDetailedEvaluation_Click);
             // 
             // btnMinimize
             // 
@@ -133,6 +137,7 @@
             this.btnMinimize.TabIndex = 3;
             this.btnMinimize.Text = "Minimize";
             this.btnMinimize.UseVisualStyleBackColor = true;
+            this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnExport
             // 
@@ -143,6 +148,7 @@
             this.btnExport.TabIndex = 4;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // pictureBox1
             // 
@@ -165,6 +171,12 @@
             this.pnlContentPanel.Name = "pnlContentPanel";
             this.pnlContentPanel.Size = new System.Drawing.Size(685, 134);
             this.pnlContentPanel.TabIndex = 6;
+            // 
+            // tmrUpdateSessions
+            // 
+            this.tmrUpdateSessions.Enabled = true;
+            this.tmrUpdateSessions.Interval = 30;
+            this.tmrUpdateSessions.Tick += new System.EventHandler(this.tmrUpdateSessions_Tick);
             // 
             // VLXMain
             // 
@@ -218,6 +230,7 @@
         private System.Windows.Forms.Button btnExport;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlContentPanel;
+        private System.Windows.Forms.Timer tmrUpdateSessions;
     }
 }
 

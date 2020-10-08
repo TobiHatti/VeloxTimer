@@ -8,6 +8,8 @@ namespace Velox
 {
     class VLXException : Exception
     {
+        public static string GlobalErrorReport { get; set; } = "";
+
         public VLXException() : base() { }
 
         public VLXException(string message) : base(ExceptionFormater(message)) { }
@@ -15,6 +17,6 @@ namespace Velox
         public VLXException(string message, Exception innerException) : base(ExceptionFormater(message), innerException) { }
 
         private static string ExceptionFormater(string message)
-            => string.Format("*** VLX-Error: {0} *** \r\n\r\nError-Log:\r\n{1}", message, VLXLib.GlobalErrorReport);
+            => string.Format("*** VLX-Error: {0} *** \r\n\r\nError-Log:\r\n{1}", message, GlobalErrorReport);
     }
 }
