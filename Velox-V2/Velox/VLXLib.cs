@@ -22,6 +22,15 @@ namespace Velox
         {
             form.Style.Border = new Pen(Color.FromKnownColor(KnownColor.Bisque), 2);
             form.Style.InactiveBorder = new Pen(Color.FromKnownColor(KnownColor.Linen), 2);
+
+            form.Style.ShadowOpacity = 30;
+            form.Style.InactiveShadowOpacity = 20;
+
+            form.Style.TitleBar.BackColor = Color.FromKnownColor(KnownColor.Bisque);
+            form.Style.TitleBar.BottomBorderColor = Color.FromKnownColor(KnownColor.Bisque);
+
+            form.Icon = Properties.Resources.VeloxIcon;
+            form.IconSize = new Size(32, 32);
         }
 
         public static bool CreateDBFile()

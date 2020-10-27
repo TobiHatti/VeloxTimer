@@ -75,6 +75,7 @@
             this.cbxTotalTimespan.Name = "cbxTotalTimespan";
             this.cbxTotalTimespan.Size = new System.Drawing.Size(125, 29);
             this.cbxTotalTimespan.TabIndex = 1;
+            this.cbxTotalTimespan.SelectedIndexChanged += new System.EventHandler(this.cbxTotalTimespan_SelectedIndexChanged);
             // 
             // label1
             // 

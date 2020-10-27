@@ -17,6 +17,9 @@ namespace Velox
         private WrapSQLite sql;
         private List<VLXCategory> categories = null;
 
+        private DateTime customStartDate = DateTime.Now;
+        private DateTime customEndDate = DateTime.Now.AddDays(5);
+
         public VLXMain()
         {
             InitializeComponent();
@@ -241,11 +244,46 @@ namespace Velox
 
         private void UpdateTotalTimespans()
         {
-            foreach (VLXCategory category in categories)
+            if (categories != null)
             {
-                // Update indicator-color
-                (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = category.TotalTime.ToString(@"hh\:mm\:ss"); ;
+                foreach (VLXCategory category in categories)
+                {
+                    if (cbxTotalTimespan.SelectedIndex != (int)TimeSelection.CustomRange)
+                    {
+                        // Update total selected timespan
+                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = category.TotalTimeFromSelection((TimeSelection)cbxTotalTimespan.SelectedIndex).ToString(@"hh\:mm\:ss");
+                    }
+                    else
+                    {
+                        // Update total selected timespan
+                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = category.TotalTimeFromSpan(customStartDate, customEndDate).ToString(@"hh\:mm\:ss");
+                    }
+                }
             }
+        }
+
+        private void cbxTotalTimespan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbxTotalTimespan.SelectedIndex == (int)TimeSelection.CustomRange) 
+            {
+                VLXDateRangePicker datePicker = new VLXDateRangePicker()
+                {
+                    StartDate = customStartDate,
+                    EndDate = customEndDate
+                };
+
+                if(datePicker.ShowDialog() == DialogResult.OK)
+                {
+                    customStartDate = datePicker.StartDate;
+                    customEndDate = datePicker.EndDate;
+                }
+                else
+                {
+                    cbxTotalTimespan.SelectedIndex = (int)TimeSelection.Total;
+                }
+            }
+
+            UpdateTotalTimespans();
         }
     }
 }
