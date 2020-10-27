@@ -35,3 +35,4 @@ C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\System.Data.SQLite.dll.
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLBase.xml
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\bin\Debug\WrapSQLite.xml
 C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\obj\Debug\Velox.VLXDateRangePicker.resources
+C:\Users\Tobias\Desktop\VeloxV2\Velox-V2\Velox\obj\Debug\Velox.VLXQuickEval.resources

@@ -136,7 +136,7 @@ namespace Velox
                         Anchor = AnchorStyles.Top | AnchorStyles.Left,
                         BackColor = Color.Gainsboro
                     };
-                    startStopButton.Click += EvaluationButton_Click;
+                    evaluationButton.Click += EvaluationButton_Click;
                     pnlContentPanel.Controls.Add(evaluationButton);
 
                     i++;
@@ -209,6 +209,14 @@ namespace Velox
         private void EvaluationButton_Click(object sender, EventArgs e)
         {
             VLXCategory category = ((sender as Button).Tag as VLXCategory);
+
+            VLXQuickEval quickEval = new VLXQuickEval()
+            {
+                Category = category,
+                CustomRangeStart = customStartDate,
+                CustomRangeEnd = customEndDate
+            };
+            quickEval.ShowDialog();
         }
 
 
@@ -271,6 +279,7 @@ namespace Velox
                     StartDate = customStartDate,
                     EndDate = customEndDate
                 };
+
 
                 if(datePicker.ShowDialog() == DialogResult.OK)
                 {

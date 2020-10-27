@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Velox
 {
-    class VLXTimestamp
+    public class VLXTimestamp
     {
         public DateTime StartTime { get; set; } = DateTime.MinValue;
         public DateTime EndTime { get; set; } = DateTime.MinValue;

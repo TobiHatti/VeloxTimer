@@ -127,7 +127,6 @@
             this.MaximizeBox = false;
             this.Name = "VeloxTimer";
             this.Text = "Velox";
-            this.TopMost = true;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.TaskTimerMain_FormClosing);
             this.Load += new System.EventHandler(this.TaskTimerMain_Load);
             this.ResumeLayout(false);

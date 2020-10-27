@@ -80,6 +80,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VLXQuickEval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VLXQuickEval.Designer.cs">
+      <DependentUpon>VLXQuickEval.cs</DependentUpon>
+    </Compile>
     <Compile Include="VLXTimestamp.cs" />
     <EmbeddedResource Include="VLXDateRangePicker.resx">
       <DependentUpon>VLXDateRangePicker.cs</DependentUpon>
@@ -97,6 +103,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="VLXQuickEval.resx">
+      <DependentUpon>VLXQuickEval.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

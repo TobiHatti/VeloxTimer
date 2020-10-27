@@ -25,7 +25,7 @@ namespace Velox
         CustomRange = 7
     }
 
-    class VLXCategory
+    public class VLXCategory
     {
         public int ID { get; } = 0;
         public string Name { get; set; } = string.Empty;
