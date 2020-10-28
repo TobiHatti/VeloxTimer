@@ -210,15 +210,39 @@ namespace Velox
         {
             VLXCategory category = ((sender as Button).Tag as VLXCategory);
 
+            OpenQuickEvalWindow(category);
+        }
+
+
+        private void OpenQuickEvalWindow(VLXCategory pCategory)
+        {
             VLXQuickEval quickEval = new VLXQuickEval()
             {
-                Category = category,
+                Category = pCategory,
                 CustomRangeStart = customStartDate,
                 CustomRangeEnd = customEndDate
             };
-            quickEval.ShowDialog();
-        }
+            DialogResult res = quickEval.ShowDialog();
 
+            // Dialog result is yes, if the user wants to add a session manually
+            if (res == DialogResult.Yes)
+            {
+                VLXManualAddSession addSession = new VLXManualAddSession()
+                {
+                    Categories = categories,
+                    PreselectedCategory = pCategory,
+                    Sql = sql
+                };
+
+                DialogResult addSessRes = addSession.ShowDialog();
+
+                if (addSessRes == DialogResult.OK)
+                    UpdateTotalTimespans();
+                
+                if (addSessRes == DialogResult.Abort || addSessRes == DialogResult.OK)
+                    OpenQuickEvalWindow(pCategory);
+            }
+        }
 
 
         private void btnManageCategories_Click(object sender, EventArgs e)

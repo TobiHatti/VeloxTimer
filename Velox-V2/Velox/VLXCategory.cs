@@ -129,38 +129,46 @@ namespace Velox
 
         public bool SaveLastSession(WrapSQLite sql)
         {
-            bool success = true;
-
-            if(!SessionActive)
+            bool success = false;
+            if (!SessionActive)
             {
-                
-                try
-                {
-                    sql.Open();
-
-                    sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Timestamps.Self} ({VLXDB.Timestamps.CategoryID},{VLXDB.Timestamps.StartTime},{VLXDB.Timestamps.EndTime}) VALUES (?,?,?)",
-                        ID,
-                        sessionStartTime,
-                        sessionEndTime
-                    );
-
-                    sql.Close();
-                }
-                catch(Exception ex)
-                {
-                    VLXException.GlobalErrorReport = ex.Message;
-                    success = false;
-                }
-
-                Timestamps.Add(new VLXTimestamp() { 
-                    StartTime = sessionStartTime,
-                    EndTime = sessionEndTime
-                });
+                success = SaveManualSession(sql, sessionStartTime, sessionEndTime);
 
                 sessionStartTime = DateTime.MinValue;
                 sessionEndTime = DateTime.MinValue;
             }
 
+            return success;
+        }
+
+        public bool SaveManualSession(WrapSQLite sql, DateTime startTime, DateTime endTime)
+        {
+            bool success = true;
+
+            try
+            {
+                sql.Open();
+
+                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Timestamps.Self} ({VLXDB.Timestamps.CategoryID},{VLXDB.Timestamps.StartTime},{VLXDB.Timestamps.EndTime}) VALUES (?,?,?)",
+                    ID,
+                    startTime,
+                    endTime
+                );
+
+                sql.Close();
+            }
+            catch (Exception ex)
+            {
+                VLXException.GlobalErrorReport = ex.Message;
+                success = false;
+            }
+
+            Timestamps.Add(new VLXTimestamp()
+            {
+                StartTime = startTime,
+                EndTime = endTime
+            });
+ 
             return success;
         }
 
@@ -172,7 +180,7 @@ namespace Velox
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(time, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
-        public static DateTime FirstDateOfWeekISO8601(int year, int weekOfYear)
+        public DateTime FirstDateOfWeekISO8601(int year, int weekOfYear)
         {
             DateTime jan1 = new DateTime(year, 1, 1);
             int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
@@ -188,6 +196,11 @@ namespace Velox
             var result = firstThursday.AddDays(weekNum * 7);
 
             return result.AddDays(-3);
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

@@ -33,6 +33,9 @@ namespace Velox
         {
             if(dtpStartTime.Value < dtpEndTime.Value)
             {
+                StartDate = dtpStartTime.Value.Date;
+                EndDate = dtpEndTime.Value.Date;
+
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }

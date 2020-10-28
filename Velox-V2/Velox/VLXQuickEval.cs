@@ -65,6 +65,13 @@ namespace Velox
 
         private void btnClose_Click(object sender, EventArgs e)
         {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btnAddSession_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Yes;
             this.Close();
         }
     }

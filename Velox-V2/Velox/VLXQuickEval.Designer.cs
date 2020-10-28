@@ -51,6 +51,7 @@
             this.lblWeekDiff = new System.Windows.Forms.Label();
             this.lblMonthDiff = new System.Windows.Forms.Label();
             this.lblDateSpan = new System.Windows.Forms.Label();
+            this.btnAddSession = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblCategoryEvalTitle
@@ -146,7 +147,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F);
-            this.label8.Location = new System.Drawing.Point(6, 274);
+            this.label8.Location = new System.Drawing.Point(6, 291);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(139, 24);
             this.label8.TabIndex = 9;
@@ -188,7 +189,7 @@
             // lblTotal
             // 
             this.lblTotal.Font = new System.Drawing.Font("Leelawadee UI Semilight", 13F);
-            this.lblTotal.Location = new System.Drawing.Point(151, 274);
+            this.lblTotal.Location = new System.Drawing.Point(151, 291);
             this.lblTotal.Name = "lblTotal";
             this.lblTotal.Size = new System.Drawing.Size(284, 24);
             this.lblTotal.TabIndex = 10;
@@ -227,7 +228,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(325, 302);
+            this.btnClose.Location = new System.Drawing.Point(325, 347);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(110, 31);
             this.btnClose.TabIndex = 12;
@@ -269,15 +270,27 @@
             this.lblDateSpan.TabIndex = 14;
             this.lblDateSpan.Text = "Last Month:";
             // 
+            // btnAddSession
+            // 
+            this.btnAddSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddSession.Location = new System.Drawing.Point(6, 347);
+            this.btnAddSession.Name = "btnAddSession";
+            this.btnAddSession.Size = new System.Drawing.Size(186, 31);
+            this.btnAddSession.TabIndex = 12;
+            this.btnAddSession.Text = "Add a session manually";
+            this.btnAddSession.UseVisualStyleBackColor = true;
+            this.btnAddSession.Click += new System.EventHandler(this.btnAddSession_Click);
+            // 
             // VLXQuickEval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(441, 339);
+            this.ClientSize = new System.Drawing.Size(441, 384);
             this.Controls.Add(this.lblDateSpan);
             this.Controls.Add(this.lblMonthDiff);
             this.Controls.Add(this.lblWeekDiff);
             this.Controls.Add(this.lblDayDiff);
+            this.Controls.Add(this.btnAddSession);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.lblLastMonth);
             this.Controls.Add(this.lblLastWeek);
@@ -303,6 +316,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "VLXQuickEval";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             this.Text = "Quick Evaluation";
@@ -337,5 +351,6 @@
         private System.Windows.Forms.Label lblWeekDiff;
         private System.Windows.Forms.Label lblMonthDiff;
         private System.Windows.Forms.Label lblDateSpan;
+        private System.Windows.Forms.Button btnAddSession;
     }
 }
