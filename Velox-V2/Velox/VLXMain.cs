@@ -247,7 +247,13 @@ namespace Velox
 
         private void btnManageCategories_Click(object sender, EventArgs e)
         {
+            VLXCategoryManager manager = new VLXCategoryManager()
+            {
+                Sql = sql,
+                Categories = categories
+            };
 
+            manager.ShowDialog();
         }
 
         private void btnDetailedEvaluation_Click(object sender, EventArgs e)

@@ -63,6 +63,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="VLXCategory.cs" />
+    <Compile Include="VLXCategoryManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VLXCategoryManager.Designer.cs">
+      <DependentUpon>VLXCategoryManager.cs</DependentUpon>
+    </Compile>
     <Compile Include="VLXDateRangePicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
       <DependentUpon>VLXQuickEval.cs</DependentUpon>
     </Compile>
     <Compile Include="VLXTimestamp.cs" />
+    <EmbeddedResource Include="VLXCategoryManager.resx">
+      <DependentUpon>VLXCategoryManager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="VLXDateRangePicker.resx">
       <DependentUpon>VLXDateRangePicker.cs</DependentUpon>
     </EmbeddedResource>

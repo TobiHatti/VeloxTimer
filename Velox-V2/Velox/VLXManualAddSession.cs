@@ -71,7 +71,7 @@ namespace Velox
 
             if(selectedEndTime < selectedStartTime)
             {
-                MessageBox.Show("End-Date cannot be after the Start-Date!", "Invalid Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("End-Time cannot be before the Start-Time!", "Invalid Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

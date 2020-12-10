@@ -41,7 +41,7 @@ namespace Velox
             }
             else
             {
-                MessageBox.Show("End-Date cannot be after the Start-Date!", "Invalid Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("End-Date cannot be before the Start-Date!", "Invalid Range", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }

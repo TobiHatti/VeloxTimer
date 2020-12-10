@@ -16,15 +16,13 @@ namespace Velox
     {
         public static string ConfigFileName { get; } = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Endev", "Velox", "vlxdata.db");
 
-        
-
         public static void SetFormStyle(SfForm form)
         {
             form.Style.Border = new Pen(Color.FromKnownColor(KnownColor.Bisque), 2);
             form.Style.InactiveBorder = new Pen(Color.FromKnownColor(KnownColor.Linen), 2);
 
-            form.Style.ShadowOpacity = 30;
-            form.Style.InactiveShadowOpacity = 20;
+            form.Style.ShadowOpacity = 50;
+            form.Style.InactiveShadowOpacity = 30;
 
             form.Style.TitleBar.BackColor = Color.FromKnownColor(KnownColor.Bisque);
             form.Style.TitleBar.BottomBorderColor = Color.FromKnownColor(KnownColor.Bisque);
