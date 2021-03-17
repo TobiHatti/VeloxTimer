@@ -87,7 +87,7 @@ namespace Velox
                     {
                         while (reader.Read())
                         {
-                            categories.Add(new VLXCategory(new Guid(Convert.ToString(reader[VLXDB.Category.ID])))
+                            categories.Add(new VLXCategory(Convert.ToString(reader[VLXDB.Category.ID]))
                             {
                                 Name = Convert.ToString(reader[VLXDB.Category.Name]),
                                 Description = Convert.ToString(reader[VLXDB.Category.Description])
