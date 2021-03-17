@@ -265,17 +265,17 @@ namespace Velox
 
         private void btnDetailedEvaluation_Click(object sender, EventArgs e)
         {
-
+            ShowPrereleaseWarning();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-
+            ShowPrereleaseWarning();
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-
+            ShowPrereleaseWarning();
         }
 
         private void tmrUpdateSessions_Tick(object sender, EventArgs e)
@@ -335,6 +335,11 @@ namespace Velox
             }
 
             UpdateTotalTimespans();
+        }
+
+        private void ShowPrereleaseWarning()
+        {
+            MessageBox.Show("This feature has not been added in the current pre-release of Velox.\r\nVisit https://endev.at/p/velox for updates.", "Velox Pre-Release", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
