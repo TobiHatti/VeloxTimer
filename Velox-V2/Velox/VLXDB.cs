@@ -27,6 +27,5 @@ namespace Velox
             public const string StartTime = "StartTime";
             public const string EndTime = "EndTime";
         }
-
     }
 }

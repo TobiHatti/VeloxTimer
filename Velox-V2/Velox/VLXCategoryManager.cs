@@ -21,21 +21,40 @@ namespace Velox
         {
             InitializeComponent();
             VLXLib.SetFormStyle(this);
+
+            this.DialogResult = DialogResult.OK;
         }
 
         private void VLXCategoryManager_Load(object sender, EventArgs e)
         {
-            lbxCategories.Items.AddRange(Categories.ToArray());
+            UpdateCategoryList();
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            Categories.Add(VLXCategory.CreateCategory(Sql));
+            UpdateCategoryList();
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            VLXCategory selectedCategory = (VLXCategory)lbxCategories.SelectedItem;
 
+            if (MessageBox.Show("Are you sure you want to delete this category and all saved records?\r\n\r\nWarning: This action cannot be undone!", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+
+                if (selectedCategory != null)
+                {
+                    Categories.Remove(selectedCategory);
+                    selectedCategory.Delete(Sql);
+                    ToggleFormState(false);
+
+                    txbName.Text = string.Empty;
+                    txbDescription.Text = string.Empty;
+                }
+
+                UpdateCategoryList();
+            }
         }
 
         private void btnSafeChanges_Click(object sender, EventArgs e)
@@ -45,7 +64,9 @@ namespace Velox
             selectedCategory.Name = txbName.Text;
             selectedCategory.Description = txbDescription.Text;
 
-            selectedCategory.SaveCategoryInfo(Sql);
+            selectedCategory.UpdateCategoryInfo(Sql);
+
+            UpdateCategoryList();
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -61,8 +82,27 @@ namespace Velox
         {
             VLXCategory selectedCategory = (VLXCategory)lbxCategories.SelectedItem;
 
-            txbName.Text = selectedCategory.Name;
-            txbDescription.Text = selectedCategory.Description;
+            if (selectedCategory != null)
+            {
+                txbName.Text = selectedCategory.Name;
+                txbDescription.Text = selectedCategory.Description;
+
+                ToggleFormState(true);
+            }
+        }
+
+        private void UpdateCategoryList()
+        {
+            lbxCategories.Items.Clear();
+            lbxCategories.Items.AddRange(Categories.ToArray());
+        }
+
+        private void ToggleFormState(bool enabled)
+        {
+            txbName.Enabled = enabled;
+            txbDescription.Enabled = enabled;
+            btnDelete.Enabled = enabled;
+            btnSafeChanges.Enabled = enabled;
         }
     }
 }

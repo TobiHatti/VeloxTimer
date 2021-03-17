@@ -69,6 +69,7 @@
             // 
             this.txbName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbName.Enabled = false;
             this.txbName.Location = new System.Drawing.Point(259, 55);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(354, 29);
@@ -89,6 +90,7 @@
             // 
             this.txbDescription.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.txbDescription.Enabled = false;
             this.txbDescription.Location = new System.Drawing.Point(259, 121);
             this.txbDescription.Multiline = true;
             this.txbDescription.Name = "txbDescription";
@@ -129,6 +131,7 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Enabled = false;
             this.btnDelete.Location = new System.Drawing.Point(334, 216);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(69, 31);
@@ -140,6 +143,7 @@
             // btnSafeChanges
             // 
             this.btnSafeChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSafeChanges.Enabled = false;
             this.btnSafeChanges.Location = new System.Drawing.Point(481, 216);
             this.btnSafeChanges.Name = "btnSafeChanges";
             this.btnSafeChanges.Size = new System.Drawing.Size(132, 31);

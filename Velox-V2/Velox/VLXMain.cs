@@ -62,6 +62,10 @@ namespace Velox
 
             int verticalOffset = -5;
 
+            // Remove every control before adding new ones
+            pnlContentPanel.Controls.Clear();
+
+
             if (pCategories.Count > 0)
             {
                 int i = 0;
@@ -108,14 +112,14 @@ namespace Velox
                         Location = new Point(293 + verticalOffset, topOffset + i * rowHeight + 1),
                         Size = new Size(14, 30),
                         Anchor = AnchorStyles.Top | AnchorStyles.Left,
-                        BackColor = Color.Red
+                        BackColor = (category.SessionActive ? Color.Lime : Color.Red)
                     });
 
                     // Start/Stop Button
                     Button startStopButton = new Button()
                     {
                         Name = "btnStartStop" + category.ID,
-                        Text = "Start",
+                        Text = (category.SessionActive ? "Stop" : "Start"),
                         Tag = category,
                         Location = new Point(212 + verticalOffset, topOffset + i * rowHeight),
                         Size = new Size(83, 32),
@@ -254,6 +258,9 @@ namespace Velox
             };
 
             manager.ShowDialog();
+         
+            UpdateControls(categories);
+            UpdateTotalTimespans();
         }
 
         private void btnDetailedEvaluation_Click(object sender, EventArgs e)
@@ -273,10 +280,15 @@ namespace Velox
 
         private void tmrUpdateSessions_Tick(object sender, EventArgs e)
         {
-            foreach(VLXCategory category in categories)
+            foreach (VLXCategory category in categories)
             {
-                // Update indicator-color
-                (pnlContentPanel.Controls.Find("lblCurrentSession" + category.ID, false)[0] as Label).Text = category.CurrentSessionTime.ToString(@"hh\:mm\:ss\:ff"); ;
+                // Try-Catch required, because timers still try to update when adding a new category in the manager
+                try
+                {
+                    // Update indicator-color
+                    (pnlContentPanel.Controls.Find("lblCurrentSession" + category.ID, false)[0] as Label).Text = category.CurrentSessionTime.ToString(@"hh\:mm\:ss\:ff"); ;
+                }
+                catch { }
             }
         }
 

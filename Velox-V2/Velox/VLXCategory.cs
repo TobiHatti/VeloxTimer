@@ -27,7 +27,7 @@ namespace Velox
 
     public class VLXCategory
     {
-        public int ID { get; } = 0;
+        public Guid ID { get; } = Guid.Empty;
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public List<VLXTimestamp> Timestamps { get; set; } = new List<VLXTimestamp>();
@@ -57,9 +57,53 @@ namespace Velox
         private DateTime sessionEndTime = DateTime.MinValue;
         
 
-        public VLXCategory(int ID)
+        public VLXCategory(Guid ID)
         {
             this.ID = ID;
+        }
+
+        public static VLXCategory CreateCategory(WrapSQLite sql)
+        {
+            Guid categoryID = Guid.NewGuid();
+            string defaultName = "New Category";
+            string defaultDescription = string.Empty;
+
+            try
+            {
+                sql.Open();
+                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Category.Self} ({VLXDB.Category.ID}, {VLXDB.Category.Name}, {VLXDB.Category.Description}) VALUES (?,?,?)", categoryID.ToString(), defaultName, defaultDescription);
+                sql.Close();
+
+                return new VLXCategory(categoryID) { Name = defaultName, Description = defaultDescription };
+            }
+            catch
+            {
+                return null;
+            } 
+        }
+
+        public void Delete(WrapSQLite sql)
+        {
+            sql.Open();
+            sql.TransactionBegin();
+            try
+            {
+                // Delete Category from DB
+                sql.ExecuteNonQuery($"DELETE FROM {VLXDB.Category.Self} WHERE {VLXDB.Category.ID} = ?", ID.ToString());
+
+                // Delete Timestamps from DB
+                sql.ExecuteNonQuery($"DELETE FROM {VLXDB.Timestamps.Self} WHERE {VLXDB.Timestamps.CategoryID} = ?", ID.ToString());
+
+                sql.TransactionCommit();
+            }
+            catch
+            { 
+                sql.TransactionRollback();
+            }
+            sql.Close();
+
+
+            
         }
 
         public TimeSpan TotalTimeFromSelection(TimeSelection pSelection)
@@ -150,7 +194,7 @@ namespace Velox
                 sql.Open();
 
                 sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Timestamps.Self} ({VLXDB.Timestamps.CategoryID},{VLXDB.Timestamps.StartTime},{VLXDB.Timestamps.EndTime}) VALUES (?,?,?)",
-                    ID,
+                    ID.ToString(),
                     startTime,
                     endTime
                 );
@@ -170,6 +214,13 @@ namespace Velox
             });
  
             return success;
+        }
+
+        public void UpdateCategoryInfo(WrapSQLite sql)
+        {
+            sql.Open();
+            sql.ExecuteNonQuery($"UPDATE {VLXDB.Category.Self} SET {VLXDB.Category.Name} = ?, {VLXDB.Category.Description} = ? WHERE {VLXDB.Category.ID} = ?", Name, Description, ID.ToString());
+            sql.Close();
         }
 
 

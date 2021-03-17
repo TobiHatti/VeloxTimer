@@ -46,10 +46,10 @@ namespace Velox
                     try
                     {
                         // Creating table "categories"
-                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' INTEGER, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT,PRIMARY KEY('{VLXDB.Category.ID}' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' TEXT, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT,PRIMARY KEY('{VLXDB.Category.ID}'));");
 
                         // Creating table "timestamps"
-                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' INTEGER, '{VLXDB.Timestamps.CategoryID}' INTEGER, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' INTEGER, '{VLXDB.Timestamps.CategoryID}' TEXT, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}' AUTOINCREMENT));");
 
                         sql.TransactionCommit();
                     }
@@ -87,7 +87,7 @@ namespace Velox
                     {
                         while (reader.Read())
                         {
-                            categories.Add(new VLXCategory(Convert.ToInt32(reader[VLXDB.Category.ID]))
+                            categories.Add(new VLXCategory(new Guid(Convert.ToString(reader[VLXDB.Category.ID])))
                             {
                                 Name = Convert.ToString(reader[VLXDB.Category.Name]),
                                 Description = Convert.ToString(reader[VLXDB.Category.Description])
