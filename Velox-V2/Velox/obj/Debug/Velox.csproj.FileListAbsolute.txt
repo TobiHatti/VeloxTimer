@@ -78,3 +78,4 @@ U:\(06) Code\(01) C#\(01) Projects [GIT]\VeloxTimer\Velox-V2\Velox\bin\Debug\Syn
 U:\(06) Code\(01) C#\(01) Projects [GIT]\VeloxTimer\Velox-V2\Velox\bin\Debug\Syncfusion.SpellChecker.Base.xml
 U:\(06) Code\(01) C#\(01) Projects [GIT]\VeloxTimer\Velox-V2\Velox\bin\Debug\Syncfusion.Grid.Windows.XmlSerializers.dll
 U:\(06) Code\(01) C#\(01) Projects [GIT]\VeloxTimer\Velox-V2\Velox\obj\Debug\Velox.csproj.CopyComplete
+U:\(06) Code\(01) C#\(01) Projects [GIT]\VeloxTimer\Velox-V2\Velox\bin\Debug\Syncfusion.Licensing.dll
