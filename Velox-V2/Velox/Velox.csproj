@@ -55,6 +55,7 @@
     <Reference Include="Syncfusion.Core.WinForms, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Grid.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Licensing, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL" />
+    <Reference Include="Syncfusion.SfInput.WinForms, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Shared.Windows, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
     <Reference Include="Syncfusion.Tools.Base, Version=18.2460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL" />
@@ -95,6 +96,12 @@
       <DependentUpon>VLXDateRangePicker.cs</DependentUpon>
     </Compile>
     <Compile Include="VLXDB.cs" />
+    <Compile Include="VLXDetailedEval.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VLXDetailedEval.Designer.cs">
+      <DependentUpon>VLXDetailedEval.cs</DependentUpon>
+    </Compile>
     <Compile Include="VLXException.cs" />
     <Compile Include="VLXLib.cs" />
     <Compile Include="VLXMain.cs">
@@ -123,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VLXDateRangePicker.resx">
       <DependentUpon>VLXDateRangePicker.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VLXDetailedEval.resx">
+      <DependentUpon>VLXDetailedEval.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VLXMain.resx">
       <DependentUpon>VLXMain.cs</DependentUpon>

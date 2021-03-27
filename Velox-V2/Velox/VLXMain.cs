@@ -265,7 +265,13 @@ namespace Velox
 
         private void btnDetailedEvaluation_Click(object sender, EventArgs e)
         {
-            ShowPrereleaseWarning();
+            VLXDetailedEval detailedEval = new VLXDetailedEval()
+            {
+                Sql = sql,
+                Categories = categories
+            };
+
+            detailedEval.Show();
         }
 
         private void btnExport_Click(object sender, EventArgs e)
@@ -298,18 +304,19 @@ namespace Velox
             {
                 foreach (VLXCategory category in categories)
                 {
+                    TimeSpan ts = TimeSpan.Zero;
                     if (cbxTotalTimespan.SelectedIndex != (int)TimeSelection.CustomRange)
                     {
-                        TimeSpan ts = category.TotalTimeFromSelection((TimeSelection)cbxTotalTimespan.SelectedIndex);
                         // Update total selected timespan
-                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = string.Format("{0:00}:{1:00}:{2:00}", (int)ts.TotalHours, ts.Minutes, ts.Seconds);
+                        ts = category.TotalTimeFromSelection((TimeSelection)cbxTotalTimespan.SelectedIndex);
                     }
                     else
                     {
-                        TimeSpan ts = category.TotalTimeFromSpan(customStartDate, customEndDate);
                         // Update total selected timespan
-                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = string.Format("{0:00}:{1:00}:{2:00}", (int)ts.TotalHours, ts.Minutes, ts.Seconds);
+                        ts = category.TotalTimeFromSpan(customStartDate, customEndDate);  
                     }
+
+                    (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = string.Format("{0:00}:{1:00}:{2:00}", (int)ts.TotalHours, ts.Minutes, ts.Seconds);
                 }
             }
         }
