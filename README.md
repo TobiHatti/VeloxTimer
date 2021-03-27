@@ -11,6 +11,8 @@
 
 ![image](https://endev.at/content/projects/VeloxTimer/Velox_Banner_300.svg)
 
+[![Build status](https://ci.appveyor.com/api/projects/status/94wptdp2afedx9hn?svg=true)](https://ci.appveyor.com/project/TobiHatti/veloxtimer)
+
 VeloxTimer is a minimalistic Task-Timer for tracking and analysing your workflows.
 
 ![image](https://endev.at/content/projects/VeloxTimer/projectImages/VeloxSample.jpg)
