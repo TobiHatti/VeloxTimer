@@ -52,7 +52,37 @@ namespace Velox
                 return tsTotal;
             }
         }
-        
+
+        public VLXTimestamp HistoricalFirstTimestamp
+        {
+            get
+            {
+                VLXTimestamp minTS = new VLXTimestamp();
+                minTS.StartTime = DateTime.MaxValue;
+
+                foreach (VLXTimestamp ts in Timestamps)
+                    if(ts.StartTime.Ticks < minTS.StartTime.Ticks)
+                        minTS = ts;
+
+                return minTS;
+            }
+        }
+
+        public VLXTimestamp HistoricalLastTimestamp
+        {
+            get
+            {
+                VLXTimestamp maxTS = new VLXTimestamp();
+                maxTS.EndTime = DateTime.MinValue;
+
+                foreach (VLXTimestamp ts in Timestamps)
+                    if (ts.EndTime.Ticks > maxTS.EndTime.Ticks)
+                        maxTS = ts;
+
+                return maxTS;
+            }
+        }
+
         private DateTime sessionStartTime = DateTime.MinValue;
         private DateTime sessionEndTime = DateTime.MinValue;
         
