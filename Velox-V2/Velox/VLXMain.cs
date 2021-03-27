@@ -300,13 +300,15 @@ namespace Velox
                 {
                     if (cbxTotalTimespan.SelectedIndex != (int)TimeSelection.CustomRange)
                     {
+                        TimeSpan ts = category.TotalTimeFromSelection((TimeSelection)cbxTotalTimespan.SelectedIndex);
                         // Update total selected timespan
-                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = category.TotalTimeFromSelection((TimeSelection)cbxTotalTimespan.SelectedIndex).ToString(@"hh\:mm\:ss");
+                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = string.Format("{0:00}:{1:00}:{2:00}", (int)ts.TotalHours, ts.Minutes, ts.Seconds);
                     }
                     else
                     {
+                        TimeSpan ts = category.TotalTimeFromSpan(customStartDate, customEndDate);
                         // Update total selected timespan
-                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = category.TotalTimeFromSpan(customStartDate, customEndDate).ToString(@"hh\:mm\:ss");
+                        (pnlContentPanel.Controls.Find("lblTotalTime" + category.ID, false)[0] as Label).Text = string.Format("{0:00}:{1:00}:{2:00}", (int)ts.TotalHours, ts.Minutes, ts.Seconds);
                     }
                 }
             }
