@@ -74,7 +74,7 @@
             this.cbxTotalTimespan.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxTotalTimespan.Name = "cbxTotalTimespan";
             this.cbxTotalTimespan.Size = new System.Drawing.Size(125, 29);
-            this.cbxTotalTimespan.TabIndex = 1;
+            this.cbxTotalTimespan.TabIndex = 5;
             this.cbxTotalTimespan.SelectedIndexChanged += new System.EventHandler(this.cbxTotalTimespan_SelectedIndexChanged);
             // 
             // label1
@@ -113,7 +113,7 @@
             this.btnManageCategories.Location = new System.Drawing.Point(12, 205);
             this.btnManageCategories.Name = "btnManageCategories";
             this.btnManageCategories.Size = new System.Drawing.Size(155, 32);
-            this.btnManageCategories.TabIndex = 3;
+            this.btnManageCategories.TabIndex = 1;
             this.btnManageCategories.Text = "Manage Categories";
             this.btnManageCategories.UseVisualStyleBackColor = true;
             this.btnManageCategories.Click += new System.EventHandler(this.btnManageCategories_Click);
@@ -124,7 +124,7 @@
             this.btnDetailedEvaluation.Location = new System.Drawing.Point(173, 205);
             this.btnDetailedEvaluation.Name = "btnDetailedEvaluation";
             this.btnDetailedEvaluation.Size = new System.Drawing.Size(155, 32);
-            this.btnDetailedEvaluation.TabIndex = 3;
+            this.btnDetailedEvaluation.TabIndex = 2;
             this.btnDetailedEvaluation.Text = "Detailed Evaluation";
             this.btnDetailedEvaluation.UseVisualStyleBackColor = true;
             this.btnDetailedEvaluation.Click += new System.EventHandler(this.btnDetailedEvaluation_Click);
@@ -135,7 +135,7 @@
             this.btnMinimize.Location = new System.Drawing.Point(583, 205);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(90, 32);
-            this.btnMinimize.TabIndex = 3;
+            this.btnMinimize.TabIndex = 4;
             this.btnMinimize.Text = "Minimize";
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
@@ -146,7 +146,7 @@
             this.btnExport.Location = new System.Drawing.Point(332, 205);
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(71, 32);
-            this.btnExport.TabIndex = 4;
+            this.btnExport.TabIndex = 3;
             this.btnExport.Text = "Export";
             this.btnExport.UseVisualStyleBackColor = true;
             this.btnExport.Click += new System.EventHandler(this.btnExport_Click);

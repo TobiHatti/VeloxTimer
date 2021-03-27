@@ -60,7 +60,7 @@
             this.btnSubmit.Location = new System.Drawing.Point(177, 168);
             this.btnSubmit.Name = "btnSubmit";
             this.btnSubmit.Size = new System.Drawing.Size(90, 33);
-            this.btnSubmit.TabIndex = 2;
+            this.btnSubmit.TabIndex = 3;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
             this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
@@ -71,26 +71,30 @@
             this.btnCancel.Location = new System.Drawing.Point(7, 168);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 33);
-            this.btnCancel.TabIndex = 2;
+            this.btnCancel.TabIndex = 4;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // dtpStartTime
             // 
+            this.dtpStartTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpStartTime.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
             this.dtpStartTime.Location = new System.Drawing.Point(7, 37);
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.Size = new System.Drawing.Size(260, 31);
-            this.dtpStartTime.TabIndex = 3;
+            this.dtpStartTime.TabIndex = 1;
             // 
             // dtpEndTime
             // 
+            this.dtpEndTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpEndTime.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
             this.dtpEndTime.Location = new System.Drawing.Point(7, 106);
             this.dtpEndTime.Name = "dtpEndTime";
             this.dtpEndTime.Size = new System.Drawing.Size(260, 31);
-            this.dtpEndTime.TabIndex = 4;
+            this.dtpEndTime.TabIndex = 2;
             // 
             // VLXDateRangePicker
             // 

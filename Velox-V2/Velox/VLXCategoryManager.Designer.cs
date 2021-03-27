@@ -49,7 +49,7 @@
             this.lbxCategories.Location = new System.Drawing.Point(5, 31);
             this.lbxCategories.Name = "lbxCategories";
             this.lbxCategories.Size = new System.Drawing.Size(248, 277);
-            this.lbxCategories.TabIndex = 0;
+            this.lbxCategories.TabIndex = 7;
             this.lbxCategories.Click += new System.EventHandler(this.lbxCategories_Click);
             this.lbxCategories.SelectedIndexChanged += new System.EventHandler(this.lbxCategories_SelectedIndexChanged);
             // 
@@ -73,7 +73,7 @@
             this.txbName.Location = new System.Drawing.Point(259, 55);
             this.txbName.Name = "txbName";
             this.txbName.Size = new System.Drawing.Size(354, 29);
-            this.txbName.TabIndex = 17;
+            this.txbName.TabIndex = 1;
             // 
             // label2
             // 
@@ -95,7 +95,7 @@
             this.txbDescription.Multiline = true;
             this.txbDescription.Name = "txbDescription";
             this.txbDescription.Size = new System.Drawing.Size(354, 89);
-            this.txbDescription.TabIndex = 17;
+            this.txbDescription.TabIndex = 2;
             // 
             // label3
             // 
@@ -114,7 +114,7 @@
             this.btnClose.Location = new System.Drawing.Point(515, 281);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 31);
-            this.btnClose.TabIndex = 19;
+            this.btnClose.TabIndex = 6;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -124,7 +124,7 @@
             this.btnAdd.Location = new System.Drawing.Point(259, 216);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(69, 31);
-            this.btnAdd.TabIndex = 19;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -135,7 +135,7 @@
             this.btnDelete.Location = new System.Drawing.Point(334, 216);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(69, 31);
-            this.btnDelete.TabIndex = 19;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -147,7 +147,7 @@
             this.btnSafeChanges.Location = new System.Drawing.Point(481, 216);
             this.btnSafeChanges.Name = "btnSafeChanges";
             this.btnSafeChanges.Size = new System.Drawing.Size(132, 31);
-            this.btnSafeChanges.TabIndex = 19;
+            this.btnSafeChanges.TabIndex = 5;
             this.btnSafeChanges.Text = "Safe Changes";
             this.btnSafeChanges.UseVisualStyleBackColor = true;
             this.btnSafeChanges.Click += new System.EventHandler(this.btnSafeChanges_Click);

@@ -231,7 +231,7 @@
             this.btnClose.Location = new System.Drawing.Point(325, 347);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(110, 31);
-            this.btnClose.TabIndex = 12;
+            this.btnClose.TabIndex = 2;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -276,7 +276,7 @@
             this.btnAddSession.Location = new System.Drawing.Point(6, 347);
             this.btnAddSession.Name = "btnAddSession";
             this.btnAddSession.Size = new System.Drawing.Size(186, 31);
-            this.btnAddSession.TabIndex = 12;
+            this.btnAddSession.TabIndex = 1;
             this.btnAddSession.Text = "Add a session manually";
             this.btnAddSession.UseVisualStyleBackColor = true;
             this.btnAddSession.Click += new System.EventHandler(this.btnAddSession_Click);

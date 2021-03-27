@@ -46,7 +46,7 @@
             this.btnCancel.Location = new System.Drawing.Point(5, 237);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(98, 31);
-            this.btnCancel.TabIndex = 13;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -57,7 +57,7 @@
             this.btnAddSession.Location = new System.Drawing.Point(174, 237);
             this.btnAddSession.Name = "btnAddSession";
             this.btnAddSession.Size = new System.Drawing.Size(113, 31);
-            this.btnAddSession.TabIndex = 14;
+            this.btnAddSession.TabIndex = 5;
             this.btnAddSession.Text = "Add Session";
             this.btnAddSession.UseVisualStyleBackColor = true;
             this.btnAddSession.Click += new System.EventHandler(this.btnAddSession_Click);
@@ -81,7 +81,7 @@
             this.cbxCategories.Location = new System.Drawing.Point(5, 72);
             this.cbxCategories.Name = "cbxCategories";
             this.cbxCategories.Size = new System.Drawing.Size(282, 29);
-            this.cbxCategories.TabIndex = 16;
+            this.cbxCategories.TabIndex = 1;
             // 
             // label2
             // 
@@ -99,7 +99,7 @@
             this.dtpStartTime.Name = "dtpStartTime";
             this.dtpStartTime.ShowUpDown = true;
             this.dtpStartTime.Size = new System.Drawing.Size(98, 29);
-            this.dtpStartTime.TabIndex = 19;
+            this.dtpStartTime.TabIndex = 3;
             // 
             // dtpEndTime
             // 
@@ -109,7 +109,7 @@
             this.dtpEndTime.Name = "dtpEndTime";
             this.dtpEndTime.ShowUpDown = true;
             this.dtpEndTime.Size = new System.Drawing.Size(99, 29);
-            this.dtpEndTime.TabIndex = 19;
+            this.dtpEndTime.TabIndex = 4;
             // 
             // label3
             // 
@@ -132,11 +132,13 @@
             // 
             // dtpDate
             // 
+            this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtpDate.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
             this.dtpDate.Location = new System.Drawing.Point(5, 141);
             this.dtpDate.Name = "dtpDate";
             this.dtpDate.Size = new System.Drawing.Size(282, 31);
-            this.dtpDate.TabIndex = 20;
+            this.dtpDate.TabIndex = 2;
             // 
             // VLXManualAddSession
             // 
