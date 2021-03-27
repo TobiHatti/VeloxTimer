@@ -31,12 +31,10 @@ namespace Velox
         {
             this.pbxTimeline = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.trScale = new System.Windows.Forms.TrackBar();
-            this.trView = new System.Windows.Forms.TrackBar();
+            this.trbScale = new System.Windows.Forms.TrackBar();
             this.trbOffset = new System.Windows.Forms.TrackBar();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTimeline)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trScale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbScale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbOffset)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +50,7 @@ namespace Velox
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(43, 90);
+            this.button1.Location = new System.Drawing.Point(6, 16);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 33);
             this.button1.TabIndex = 1;
@@ -60,36 +58,24 @@ namespace Velox
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // trScale
+            // trbScale
             // 
-            this.trScale.Location = new System.Drawing.Point(6, 269);
-            this.trScale.Maximum = 10000000;
-            this.trScale.Minimum = 1000000;
-            this.trScale.Name = "trScale";
-            this.trScale.Size = new System.Drawing.Size(161, 45);
-            this.trScale.TabIndex = 3;
-            this.trScale.Value = 1000000;
-            this.trScale.Scroll += new System.EventHandler(this.trScale_Scroll);
-            // 
-            // trView
-            // 
-            this.trView.Location = new System.Drawing.Point(6, 138);
-            this.trView.Maximum = 100;
-            this.trView.Minimum = 1;
-            this.trView.Name = "trView";
-            this.trView.Size = new System.Drawing.Size(161, 45);
-            this.trView.TabIndex = 4;
-            this.trView.Value = 1;
-            this.trView.Scroll += new System.EventHandler(this.trView_Scroll);
+            this.trbScale.Location = new System.Drawing.Point(6, 55);
+            this.trbScale.Maximum = 50;
+            this.trbScale.Minimum = 1;
+            this.trbScale.Name = "trbScale";
+            this.trbScale.Size = new System.Drawing.Size(161, 45);
+            this.trbScale.TabIndex = 2;
+            this.trbScale.Value = 25;
+            this.trbScale.Scroll += new System.EventHandler(this.trbScale_Scroll);
             // 
             // trbOffset
             // 
-            this.trbOffset.Location = new System.Drawing.Point(6, 189);
-            this.trbOffset.Maximum = 100;
-            this.trbOffset.Minimum = 1;
+            this.trbOffset.Location = new System.Drawing.Point(6, 106);
+            this.trbOffset.Maximum = 500;
             this.trbOffset.Name = "trbOffset";
             this.trbOffset.Size = new System.Drawing.Size(161, 45);
-            this.trbOffset.TabIndex = 5;
+            this.trbOffset.TabIndex = 3;
             this.trbOffset.Value = 1;
             this.trbOffset.Scroll += new System.EventHandler(this.trbOffset_Scroll);
             // 
@@ -99,8 +85,7 @@ namespace Velox
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 630);
             this.Controls.Add(this.trbOffset);
-            this.Controls.Add(this.trView);
-            this.Controls.Add(this.trScale);
+            this.Controls.Add(this.trbScale);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.pbxTimeline);
             this.Font = new System.Drawing.Font("Leelawadee UI Semilight", 12F);
@@ -110,8 +95,7 @@ namespace Velox
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             this.Text = "Detailed Evaluation";
             ((System.ComponentModel.ISupportInitialize)(this.pbxTimeline)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trScale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trbScale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.trbOffset)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -122,8 +106,7 @@ namespace Velox
 
         private System.Windows.Forms.PictureBox pbxTimeline;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar trScale;
-        private System.Windows.Forms.TrackBar trView;
+        private System.Windows.Forms.TrackBar trbScale;
         private System.Windows.Forms.TrackBar trbOffset;
     }
 }

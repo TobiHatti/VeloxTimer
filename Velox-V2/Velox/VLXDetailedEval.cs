@@ -30,39 +30,56 @@ namespace Velox
 
         private void pbxTimeline_Paint(object sender, PaintEventArgs e)
         {
+            e.Graphics.ScaleTransform((float)trbScale.Value, 1);
+            e.Graphics.TranslateTransform(-trbOffset.Value, 1);
+
+            
+
+            // Get Ticks per Day
+            decimal TicksPerDay = DateTime.MinValue.AddDays(1).Ticks - DateTime.MinValue.Ticks;
+
+            decimal TicksPerQuarterHour = TicksPerDay / (24 * 4);
+
+            // Get first timestamp
             long minTSTick = long.MaxValue;
-            long maxTSTick = int.MinValue;
-
-            e.Graphics.ScaleTransform(1/(float)trView.Value, 1);
-            e.Graphics.TranslateTransform(trbOffset.Value, 1);
-
             foreach (VLXCategory category in Categories)
             {
                 long tmpMinTick = category.HistoricalFirstTimestamp.StartTime.Ticks;
-                long tmpMaxTick = category.HistoricalLastTimestamp.EndTime.Ticks;
-
                 if (tmpMinTick < minTSTick)
                     minTSTick = tmpMinTick;
-
-                if (tmpMaxTick > maxTSTick)
-                    maxTSTick = tmpMaxTick;
             }
 
-            Debug.WriteLine("Min-Tick: " + new DateTime(minTSTick).ToString());
-            Debug.WriteLine("Max-Tick: " + new DateTime(maxTSTick).ToString());
+            decimal minTS = (minTSTick / TicksPerQuarterHour);
 
-            int rowOffset = 1;
+
+            for (int i = 0; i < 1000; i++)
+            {
+                DateTime displayTime = new DateTime(minTSTick);
+                // Full Hours:
+                if (i % 4 == 0)
+                {
+                    e.Graphics.DrawLine(Pens.Black, i, 0, i, pbxTimeline.Height);
+                }
+                // Quarter Hours
+                else e.Graphics.DrawLine(Pens.Gray, i, 0, i, pbxTimeline.Height);
+            }
+
+            int rowOffset = 0;
+            // Cycle through all timestamps
             foreach (VLXCategory category in Categories)
             {
-                foreach(VLXTimestamp ts in category.Timestamps)
+                foreach (VLXTimestamp ts in category.Timestamps)
                 {
-                    float from = (ts.StartTime.Ticks - minTSTick) / 1000000000;
-                    float to = (ts.EndTime.Ticks - minTSTick) / 1000000000;
+                    decimal from = (ts.StartTime.Ticks / TicksPerQuarterHour);
+                    decimal to = (ts.EndTime.Ticks / TicksPerQuarterHour);
+
+                    decimal fromRef = from - minTS;
+                    decimal toRef = to - minTS;
 
                     RectangleF rect = new RectangleF(
-                          from,
+                          (float)fromRef,
                           rowOffset,
-                          to - from,
+                          (float)(toRef - fromRef),
                           15
                     );
 
@@ -78,12 +95,7 @@ namespace Velox
             pbxTimeline.Invalidate();
         }
 
-        private void trScale_Scroll(object sender, EventArgs e)
-        {
-            pbxTimeline.Invalidate();
-        }
-
-        private void trView_Scroll(object sender, EventArgs e)
+        private void trbScale_Scroll(object sender, EventArgs e)
         {
             pbxTimeline.Invalidate();
         }
