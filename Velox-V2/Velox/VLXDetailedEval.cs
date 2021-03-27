@@ -17,6 +17,7 @@ namespace Velox
     {
         public WrapSQLite Sql = null;
         public List<VLXCategory> Categories = null;
+        private TimelineScale scale = TimelineScale.Hours;
 
         public VLXDetailedEval()
         {
@@ -24,85 +25,148 @@ namespace Velox
 
             VLXLib.SetFormStyle(this);
             this.DialogResult = DialogResult.OK;
-
-            pbxTimeline.Invalidate();
         }
 
-        private void pbxTimeline_Paint(object sender, PaintEventArgs e)
+        private void VLXDetailedEval_Load(object sender, EventArgs e)
         {
-            e.Graphics.ScaleTransform((float)trbScale.Value, 1);
-            e.Graphics.TranslateTransform(-trbOffset.Value, 1);
+            CreateTimeline();
+        }
 
-            
+        private enum TimelineScale
+        {
+            Months,
+            Days,
+            Hours,
+            SixHours
+        }
 
-            // Get Ticks per Day
-            decimal TicksPerDay = DateTime.MinValue.AddDays(1).Ticks - DateTime.MinValue.Ticks;
+        private void CreateTimeline()
+        {
+            // Remove all components from the panel
+            pnlTimeLine.Controls.Clear();
 
-            decimal TicksPerQuarterHour = TicksPerDay / (24 * 4);
+            decimal sizeScale = (decimal)Math.Pow(trbPanelScale.Value, 2);
 
-            // Get first timestamp
-            long minTSTick = long.MaxValue;
-            foreach (VLXCategory category in Categories)
-            {
-                long tmpMinTick = category.HistoricalFirstTimestamp.StartTime.Ticks;
-                if (tmpMinTick < minTSTick)
-                    minTSTick = tmpMinTick;
-            }
+            // Get Timescales
+            // Timescale / 1 Day
+            decimal TimescaleDay = TimeSpan.TicksPerDay / sizeScale;
 
-            decimal minTS = (minTSTick / TicksPerQuarterHour);
+            // Get Day of first entry from all categories
+            long firstDayTS = GetFirstDay().Ticks;
 
+            // Get Last Day of all entries
+            DateTime lastDay = GetLastDay();
 
-            for (int i = 0; i < 1000; i++)
-            {
-                DateTime displayTime = new DateTime(minTSTick);
-                // Full Hours:
-                if (i % 4 == 0)
-                {
-                    e.Graphics.DrawLine(Pens.Black, i, 0, i, pbxTimeline.Height);
-                }
-                // Quarter Hours
-                else e.Graphics.DrawLine(Pens.Gray, i, 0, i, pbxTimeline.Height);
-            }
+            // Calculate total Days
+            int totalDays = (lastDay - new DateTime(firstDayTS)).Days;
 
-            int rowOffset = 0;
-            // Cycle through all timestamps
+            // Calculate the offset-amount of all elements on the timeline to start 
+            // at the first day containing a timestamp
+            decimal firstDayOffset = firstDayTS / TimescaleDay;
+
+            // Add Timestamp-elements
+            int row = 0;
             foreach (VLXCategory category in Categories)
             {
                 foreach (VLXTimestamp ts in category.Timestamps)
                 {
-                    decimal from = (ts.StartTime.Ticks / TicksPerQuarterHour);
-                    decimal to = (ts.EndTime.Ticks / TicksPerQuarterHour);
-
-                    decimal fromRef = from - minTS;
-                    decimal toRef = to - minTS;
-
-                    RectangleF rect = new RectangleF(
-                          (float)fromRef,
-                          rowOffset,
-                          (float)(toRef - fromRef),
-                          15
-                    );
-
-                    e.Graphics.FillRectangle(Brushes.Red, rect);
+                    CreateTimestampElement(category, ts, row, firstDayOffset, TimescaleDay);
                 }
+                row++;
+            }
 
-                rowOffset += 20;
+            // Create Timegrid
+            switch (scale)
+            {
+                case TimelineScale.Hours:
+                    for (int i = 0; i <= totalDays * 24; i++)
+                        if(i % 6 != 0)
+                            CreateTimeStep((int)((int)i * TimeSpan.TicksPerHour / TimescaleDay), Color.Gainsboro, 1);
+                    goto case TimelineScale.SixHours;
+                case TimelineScale.SixHours:
+                    for (int i = 0; i <= totalDays * 4; i++)
+                        if(i % 4 != 0)
+                            CreateTimeStep((int)((int)i * (TimeSpan.TicksPerHour * 6) / TimescaleDay), Color.DimGray, 2);
+                    goto case TimelineScale.Days;
+                case TimelineScale.Days:
+                    for (int i = 0; i <= totalDays; i++)
+                        CreateTimeStep((int)((int)i * TimeSpan.TicksPerDay / TimescaleDay), Color.Orange, 3);
+                    goto case TimelineScale.Months;
+                case TimelineScale.Months:
+                    // Todo: detect first day of month
+                    //for (int i = 0; i <= totalDays; i++)
+                    //    CreateTimeStep((int)((int)i * TimeSpan.TicksPerDay / TimescaleDay), Color.Orange, 3);
+                    break;
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private DateTime GetFirstDay()
         {
-            pbxTimeline.Invalidate();
+            DateTime firstDay = DateTime.MaxValue;
+            foreach(VLXCategory category in Categories)
+            {
+                DateTime firstCategoryTS = category.HistoricalFirstTimestamp.StartTime;
+
+                if (firstCategoryTS < firstDay)
+                    firstDay = firstCategoryTS;
+            }
+
+            return new DateTime(firstDay.Year, firstDay.Month, firstDay.Day, 0, 0, 0);
         }
 
-        private void trbScale_Scroll(object sender, EventArgs e)
+        private DateTime GetLastDay()
         {
-            pbxTimeline.Invalidate();
+            DateTime lastDay = DateTime.MinValue;
+            foreach (VLXCategory category in Categories)
+            {
+                DateTime lastCategoryTS = category.HistoricalLastTimestamp.EndTime;
+
+                if (lastCategoryTS > lastDay)
+                    lastDay = lastCategoryTS;
+            }
+
+            return new DateTime(lastDay.Year, lastDay.Month, lastDay.Day, 0, 0, 0).AddDays(1);
         }
 
-        private void trbOffset_Scroll(object sender, EventArgs e)
+        private void CreateTimestampElement(VLXCategory category, VLXTimestamp ts, int row, decimal firstDayOffset, decimal Timescale)
         {
-            pbxTimeline.Invalidate();
+            decimal from = (ts.StartTime.Ticks / Timescale);
+            decimal to = (ts.EndTime.Ticks / Timescale);
+
+            decimal fromRel = from - firstDayOffset;
+            decimal toRel = to - firstDayOffset;
+
+
+            PictureBox tsElement = new PictureBox
+            {
+                Top = row * 40 + 20,
+                Left = (int)fromRel,
+                Height = 30,
+                Width = (int)(toRel - fromRel),
+                BackColor = Color.Red
+            };
+
+            pnlTimeLine.Controls.Add(tsElement);
+        }
+
+        private void CreateTimeStep(int offset, Color color, int width)
+        {
+            PictureBox timeStep = new PictureBox
+            {
+                Top = 0,
+                Left = offset - width/2,
+                Height = pnlTimeLine.Height,
+                Width = width,
+                BackColor = color
+            };
+
+            pnlTimeLine.Controls.Add(timeStep);
+        }
+
+
+        private void trbPanelScale_Scroll(object sender, EventArgs e)
+        {
+            CreateTimeline();
         }
     }
 }

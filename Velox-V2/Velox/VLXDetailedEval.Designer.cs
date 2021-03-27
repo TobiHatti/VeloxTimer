@@ -29,84 +29,60 @@ namespace Velox
         /// </summary>
         private void InitializeComponent()
         {
-            this.pbxTimeline = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.trbScale = new System.Windows.Forms.TrackBar();
-            this.trbOffset = new System.Windows.Forms.TrackBar();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxTimeline)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbScale)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbOffset)).BeginInit();
+            this.pnlTimeLine = new System.Windows.Forms.Panel();
+            this.trbPanelScale = new Syncfusion.Windows.Forms.Tools.TrackBarEx(10, 40);
             this.SuspendLayout();
             // 
-            // pbxTimeline
+            // pnlTimeLine
             // 
-            this.pbxTimeline.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbxTimeline.Location = new System.Drawing.Point(173, 6);
-            this.pbxTimeline.Name = "pbxTimeline";
-            this.pbxTimeline.Size = new System.Drawing.Size(871, 618);
-            this.pbxTimeline.TabIndex = 0;
-            this.pbxTimeline.TabStop = false;
-            this.pbxTimeline.Paint += new System.Windows.Forms.PaintEventHandler(this.pbxTimeline_Paint);
+            this.pnlTimeLine.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlTimeLine.AutoScroll = true;
+            this.pnlTimeLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlTimeLine.Location = new System.Drawing.Point(5, 5);
+            this.pnlTimeLine.Name = "pnlTimeLine";
+            this.pnlTimeLine.Size = new System.Drawing.Size(1040, 594);
+            this.pnlTimeLine.TabIndex = 4;
             // 
-            // button1
+            // trbPanelScale
             // 
-            this.button1.Location = new System.Drawing.Point(6, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 33);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Refresh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // trbScale
-            // 
-            this.trbScale.Location = new System.Drawing.Point(6, 55);
-            this.trbScale.Maximum = 50;
-            this.trbScale.Minimum = 1;
-            this.trbScale.Name = "trbScale";
-            this.trbScale.Size = new System.Drawing.Size(161, 45);
-            this.trbScale.TabIndex = 2;
-            this.trbScale.Value = 25;
-            this.trbScale.Scroll += new System.EventHandler(this.trbScale_Scroll);
-            // 
-            // trbOffset
-            // 
-            this.trbOffset.Location = new System.Drawing.Point(6, 106);
-            this.trbOffset.Maximum = 500;
-            this.trbOffset.Name = "trbOffset";
-            this.trbOffset.Size = new System.Drawing.Size(161, 45);
-            this.trbOffset.TabIndex = 3;
-            this.trbOffset.Value = 1;
-            this.trbOffset.Scroll += new System.EventHandler(this.trbOffset_Scroll);
+            this.trbPanelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.trbPanelScale.BackColor = System.Drawing.Color.White;
+            this.trbPanelScale.BeforeTouchSize = new System.Drawing.Size(297, 20);
+            this.trbPanelScale.Location = new System.Drawing.Point(748, 605);
+            this.trbPanelScale.Name = "trbPanelScale";
+            this.trbPanelScale.Size = new System.Drawing.Size(297, 20);
+            this.trbPanelScale.SmallChange = 5;
+            this.trbPanelScale.Style = Syncfusion.Windows.Forms.Tools.TrackBarEx.Theme.Metro;
+            this.trbPanelScale.TabIndex = 5;
+            this.trbPanelScale.Text = "trackBarEx1";
+            this.trbPanelScale.ThemeName = "Metro";
+            this.trbPanelScale.TimerInterval = 5;
+            this.trbPanelScale.Value = 10;
+            this.trbPanelScale.Scroll += new System.EventHandler(this.trbPanelScale_Scroll);
             // 
             // VLXDetailedEval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1050, 630);
-            this.Controls.Add(this.trbOffset);
-            this.Controls.Add(this.trbScale);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.pbxTimeline);
+            this.Controls.Add(this.trbPanelScale);
+            this.Controls.Add(this.pnlTimeLine);
             this.Font = new System.Drawing.Font("Leelawadee UI Semilight", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "VLXDetailedEval";
             this.Style.MdiChild.IconHorizontalAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             this.Text = "Detailed Evaluation";
-            ((System.ComponentModel.ISupportInitialize)(this.pbxTimeline)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbScale)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.trbOffset)).EndInit();
+            this.Load += new System.EventHandler(this.VLXDetailedEval_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.PictureBox pbxTimeline;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TrackBar trbScale;
-        private System.Windows.Forms.TrackBar trbOffset;
+        private System.Windows.Forms.Panel pnlTimeLine;
+        private Syncfusion.Windows.Forms.Tools.TrackBarEx trbPanelScale;
     }
 }
