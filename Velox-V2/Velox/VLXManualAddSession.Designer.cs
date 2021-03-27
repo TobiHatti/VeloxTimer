@@ -32,12 +32,12 @@
             this.btnAddSession = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.cbxCategories = new System.Windows.Forms.ComboBox();
-            this.dtpDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.dtpDate = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -82,15 +82,6 @@
             this.cbxCategories.Name = "cbxCategories";
             this.cbxCategories.Size = new System.Drawing.Size(282, 29);
             this.cbxCategories.TabIndex = 16;
-            // 
-            // dtpDate
-            // 
-            this.dtpDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpDate.Location = new System.Drawing.Point(5, 143);
-            this.dtpDate.Name = "dtpDate";
-            this.dtpDate.Size = new System.Drawing.Size(282, 29);
-            this.dtpDate.TabIndex = 17;
             // 
             // label2
             // 
@@ -139,17 +130,25 @@
             this.label4.TabIndex = 18;
             this.label4.Text = "to";
             // 
+            // dtpDate
+            // 
+            this.dtpDate.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
+            this.dtpDate.Location = new System.Drawing.Point(5, 141);
+            this.dtpDate.Name = "dtpDate";
+            this.dtpDate.Size = new System.Drawing.Size(282, 31);
+            this.dtpDate.TabIndex = 20;
+            // 
             // VLXManualAddSession
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(292, 273);
+            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.dtpEndTime);
             this.Controls.Add(this.dtpStartTime);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.dtpDate);
             this.Controls.Add(this.cbxCategories);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnCancel);
@@ -176,11 +175,11 @@
         private System.Windows.Forms.Button btnAddSession;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cbxCategories;
-        private System.Windows.Forms.DateTimePicker dtpDate;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtpStartTime;
         private System.Windows.Forms.DateTimePicker dtpEndTime;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private Syncfusion.WinForms.Input.SfDateTimeEdit dtpDate;
     }
 }

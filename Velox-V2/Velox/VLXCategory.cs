@@ -147,7 +147,10 @@ namespace Velox
         {
             TimeSpan cummulated = TimeSpan.Zero;
 
-            foreach(VLXTimestamp ts in Timestamps)
+            // Required, otherwise timespans on the end-date will not get counted.
+            pSelectionEnd = pSelectionEnd.AddDays(1);
+
+            foreach (VLXTimestamp ts in Timestamps)
                 if (ts.StartTime.Ticks > pSelectionStart.Ticks && ts.EndTime.Ticks < pSelectionEnd.Ticks) cummulated += ts.TimeSpan;
             
             return cummulated;

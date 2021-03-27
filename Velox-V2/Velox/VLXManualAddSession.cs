@@ -52,18 +52,18 @@ namespace Velox
         private void btnAddSession_Click(object sender, EventArgs e)
         {
             selectedStartTime = new DateTime(
-                dtpDate.Value.Year,
-                dtpDate.Value.Month,
-                dtpDate.Value.Day,
+                dtpDate.Value.Value.Year,
+                dtpDate.Value.Value.Month,
+                dtpDate.Value.Value.Day,
                 dtpStartTime.Value.Hour,
                 dtpStartTime.Value.Minute,
                 dtpStartTime.Value.Second
             );
 
             selectedEndTime = new DateTime(
-                dtpDate.Value.Year,
-                dtpDate.Value.Month,
-                dtpDate.Value.Day,
+                dtpDate.Value.Value.Year,
+                dtpDate.Value.Value.Month,
+                dtpDate.Value.Value.Day,
                 dtpEndTime.Value.Hour,
                 dtpEndTime.Value.Minute,
                 dtpEndTime.Value.Second

@@ -28,23 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpStartTime = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
-            this.dtpEndTime = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.dtpStartTime = new Syncfusion.WinForms.Input.SfDateTimeEdit();
+            this.dtpEndTime = new Syncfusion.WinForms.Input.SfDateTimeEdit();
             this.SuspendLayout();
-            // 
-            // dtpStartTime
-            // 
-            this.dtpStartTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpStartTime.Location = new System.Drawing.Point(7, 39);
-            this.dtpStartTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtpStartTime.Name = "dtpStartTime";
-            this.dtpStartTime.Size = new System.Drawing.Size(260, 29);
-            this.dtpStartTime.TabIndex = 0;
             // 
             // label1
             // 
@@ -54,16 +44,6 @@
             this.label1.Size = new System.Drawing.Size(79, 21);
             this.label1.TabIndex = 1;
             this.label1.Text = "Start-Date";
-            // 
-            // dtpEndTime
-            // 
-            this.dtpEndTime.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtpEndTime.Location = new System.Drawing.Point(7, 108);
-            this.dtpEndTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtpEndTime.Name = "dtpEndTime";
-            this.dtpEndTime.Size = new System.Drawing.Size(260, 29);
-            this.dtpEndTime.TabIndex = 0;
             // 
             // label2
             // 
@@ -96,17 +76,33 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
+            // dtpStartTime
+            // 
+            this.dtpStartTime.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
+            this.dtpStartTime.Location = new System.Drawing.Point(7, 37);
+            this.dtpStartTime.Name = "dtpStartTime";
+            this.dtpStartTime.Size = new System.Drawing.Size(260, 31);
+            this.dtpStartTime.TabIndex = 3;
+            // 
+            // dtpEndTime
+            // 
+            this.dtpEndTime.DateTimePattern = Syncfusion.WinForms.Input.Enums.DateTimePattern.LongDate;
+            this.dtpEndTime.Location = new System.Drawing.Point(7, 106);
+            this.dtpEndTime.Name = "dtpEndTime";
+            this.dtpEndTime.Size = new System.Drawing.Size(260, 31);
+            this.dtpEndTime.TabIndex = 4;
+            // 
             // VLXDateRangePicker
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(274, 207);
+            this.Controls.Add(this.dtpEndTime);
+            this.Controls.Add(this.dtpStartTime);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dtpEndTime);
-            this.Controls.Add(this.dtpStartTime);
             this.Font = new System.Drawing.Font("Leelawadee UI Semilight", 12F);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -124,12 +120,11 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dtpStartTime;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dtpEndTime;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnCancel;
+        private Syncfusion.WinForms.Input.SfDateTimeEdit dtpStartTime;
+        private Syncfusion.WinForms.Input.SfDateTimeEdit dtpEndTime;
     }
 }
