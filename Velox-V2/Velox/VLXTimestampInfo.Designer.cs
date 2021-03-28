@@ -38,6 +38,7 @@ namespace Velox
             this.lblTimespan = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblCategoryName = new System.Windows.Forms.Label();
+            this.btnDeleteTS = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
@@ -124,11 +125,24 @@ namespace Velox
             this.lblCategoryName.TabIndex = 8;
             this.lblCategoryName.Text = "-- CategoryName --";
             // 
+            // btnDeleteTS
+            // 
+            this.btnDeleteTS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnDeleteTS.ForeColor = System.Drawing.Color.Red;
+            this.btnDeleteTS.Location = new System.Drawing.Point(5, 203);
+            this.btnDeleteTS.Name = "btnDeleteTS";
+            this.btnDeleteTS.Size = new System.Drawing.Size(74, 33);
+            this.btnDeleteTS.TabIndex = 9;
+            this.btnDeleteTS.Text = "Delete";
+            this.btnDeleteTS.UseVisualStyleBackColor = true;
+            this.btnDeleteTS.Click += new System.EventHandler(this.btnDeleteTS_Click);
+            // 
             // VLXTimestampInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 241);
+            this.Controls.Add(this.btnDeleteTS);
             this.Controls.Add(this.lblCategoryName);
             this.Controls.Add(this.lblTimespan);
             this.Controls.Add(this.label4);
@@ -165,5 +179,6 @@ namespace Velox
         private System.Windows.Forms.Label lblTimespan;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblCategoryName;
+        private System.Windows.Forms.Button btnDeleteTS;
     }
 }

@@ -31,6 +31,7 @@ namespace Velox
         {
             this.pnlTimeLine = new System.Windows.Forms.Panel();
             this.trbPanelScale = new Syncfusion.Windows.Forms.Tools.TrackBarEx(10, 40);
+            this.btnAddSession = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // pnlTimeLine
@@ -42,7 +43,7 @@ namespace Velox
             this.pnlTimeLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlTimeLine.Location = new System.Drawing.Point(196, 5);
             this.pnlTimeLine.Name = "pnlTimeLine";
-            this.pnlTimeLine.Size = new System.Drawing.Size(849, 594);
+            this.pnlTimeLine.Size = new System.Drawing.Size(849, 590);
             this.pnlTimeLine.TabIndex = 4;
             // 
             // trbPanelScale
@@ -50,7 +51,7 @@ namespace Velox
             this.trbPanelScale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.trbPanelScale.BackColor = System.Drawing.Color.White;
             this.trbPanelScale.BeforeTouchSize = new System.Drawing.Size(297, 20);
-            this.trbPanelScale.Location = new System.Drawing.Point(748, 605);
+            this.trbPanelScale.Location = new System.Drawing.Point(748, 601);
             this.trbPanelScale.Name = "trbPanelScale";
             this.trbPanelScale.Size = new System.Drawing.Size(297, 20);
             this.trbPanelScale.SmallChange = 5;
@@ -62,11 +63,23 @@ namespace Velox
             this.trbPanelScale.Value = 10;
             this.trbPanelScale.Scroll += new System.EventHandler(this.trbPanelScale_Scroll);
             // 
+            // btnAddSession
+            // 
+            this.btnAddSession.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAddSession.Location = new System.Drawing.Point(196, 601);
+            this.btnAddSession.Name = "btnAddSession";
+            this.btnAddSession.Size = new System.Drawing.Size(186, 31);
+            this.btnAddSession.TabIndex = 6;
+            this.btnAddSession.Text = "Add a session manually";
+            this.btnAddSession.UseVisualStyleBackColor = true;
+            this.btnAddSession.Click += new System.EventHandler(this.btnAddSession_Click);
+            // 
             // VLXDetailedEval
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1050, 630);
+            this.ClientSize = new System.Drawing.Size(1050, 637);
+            this.Controls.Add(this.btnAddSession);
             this.Controls.Add(this.trbPanelScale);
             this.Controls.Add(this.pnlTimeLine);
             this.Font = new System.Drawing.Font("Leelawadee UI Semilight", 12F);
@@ -85,5 +98,6 @@ namespace Velox
         #endregion
         private System.Windows.Forms.Panel pnlTimeLine;
         private Syncfusion.Windows.Forms.Tools.TrackBarEx trbPanelScale;
+        private System.Windows.Forms.Button btnAddSession;
     }
 }

@@ -7,6 +7,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using WrapSQL;
 
 namespace Velox
@@ -210,9 +211,23 @@ namespace Velox
         public bool SaveLastSession(WrapSQLite sql)
         {
             bool success = false;
+            bool saveEntry = true;
             if (!SessionActive)
             {
-                success = SaveManualSession(sql, sessionStartTime, sessionEndTime);
+                if((sessionEndTime - sessionStartTime).TotalMinutes < 1)
+                {
+                    saveEntry = false;
+                    if (MessageBox.Show($"The recorded time is below 1 minute ({(sessionEndTime - sessionStartTime).ToString("ss")}s). Do you still want to save this record?", "Short record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        saveEntry = true;
+                    }
+                }
+
+                if (saveEntry)
+                {
+                    success = SaveManualSession(sql, sessionStartTime, sessionEndTime);
+                }
+                else success = true;
 
                 sessionStartTime = DateTime.MinValue;
                 sessionEndTime = DateTime.MinValue;
@@ -225,11 +240,14 @@ namespace Velox
         {
             bool success = true;
 
+            string TimestampID = Guid.NewGuid().ToString();
+
             try
             {
                 sql.Open();
 
-                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Timestamps.Self} ({VLXDB.Timestamps.CategoryID},{VLXDB.Timestamps.StartTime},{VLXDB.Timestamps.EndTime}) VALUES (?,?,?)",
+                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Timestamps.Self} ({VLXDB.Timestamps.ID},{VLXDB.Timestamps.CategoryID},{VLXDB.Timestamps.StartTime},{VLXDB.Timestamps.EndTime}) VALUES (?,?,?,?)",
+                    TimestampID,
                     ID,
                     startTime,
                     endTime
@@ -245,6 +263,7 @@ namespace Velox
 
             Timestamps.Add(new VLXTimestamp()
             {
+                ID = TimestampID,
                 StartTime = startTime,
                 EndTime = endTime
             });

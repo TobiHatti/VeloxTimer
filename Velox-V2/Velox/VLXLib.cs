@@ -49,7 +49,7 @@ namespace Velox
                         sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' TEXT, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT, '{VLXDB.Category.Color}' INTEGER, PRIMARY KEY('{VLXDB.Category.ID}'));");
 
                         // Creating table "timestamps"
-                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' INTEGER, '{VLXDB.Timestamps.CategoryID}' TEXT, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}' AUTOINCREMENT));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' TEXT, '{VLXDB.Timestamps.CategoryID}' TEXT, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}'));");
 
                         sql.TransactionCommit();
                     }
@@ -126,6 +126,7 @@ namespace Velox
                                 {
                                     pUnfilledCategoryList[i].Timestamps.Add(new VLXTimestamp
                                     {
+                                        ID = Convert.ToString(reader[VLXDB.Timestamps.ID]),
                                         StartTime = Convert.ToDateTime(reader[VLXDB.Timestamps.StartTime]),
                                         EndTime = Convert.ToDateTime(reader[VLXDB.Timestamps.EndTime])
                                     });

@@ -281,7 +281,8 @@ namespace Velox
                 Categories = categories
             };
 
-            detailedEval.Show();
+            detailedEval.ShowDialog();
+            UpdateControls(categories);
         }
 
         private void btnExport_Click(object sender, EventArgs e)

@@ -193,7 +193,7 @@ namespace Velox
                 Top = row * 40 + 60,
                 Left = (int)fromRel,
                 Height = 30,
-                Width = (int)(toRel - fromRel),
+                Width = Math.Max(5,(int)(toRel - fromRel)),
                 BackColor = category.CategoryColor,
                 Tag = new Tuple<VLXCategory, VLXTimestamp>(category, ts),
                 Cursor = Cursors.Hand
@@ -224,10 +224,14 @@ namespace Velox
             VLXTimestampInfo tsInfo = new VLXTimestampInfo()
             {
                 Category = tsData.Item1,
-                Timestamp = tsData.Item2
+                Timestamp = tsData.Item2,
+                Sql = this.Sql
             };
 
-            tsInfo.ShowDialog();
+            if(tsInfo.ShowDialog() == DialogResult.Yes)
+            {
+                CreateTimeline();
+            }
         }
 
         private void CreateTimeStep(int offset, Color color, int width)
@@ -268,6 +272,21 @@ namespace Velox
         private void VLXDetailedEval_ResizeEnd(object sender, EventArgs e)
         {
             CreateTimeline();
+        }
+
+        private void btnAddSession_Click(object sender, EventArgs e)
+        {
+            VLXManualAddSession addSession = new VLXManualAddSession()
+            {
+                Categories = this.Categories,
+                PreselectedCategory = null,
+                Sql = this.Sql
+            };
+
+            if(addSession.ShowDialog() == DialogResult.OK)
+            {
+                CreateTimeline();
+            }
         }
     }
 }
