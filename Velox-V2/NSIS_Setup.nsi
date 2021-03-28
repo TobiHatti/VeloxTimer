@@ -2,7 +2,7 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "Velox"
-!define PRODUCT_VERSION "2.0.0-pre1"
+!define PRODUCT_VERSION "2.0.0"
 !define PRODUCT_PUBLISHER "Endev"
 !define PRODUCT_WEB_SITE "https://endev.at/p/velox"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\Velox.exe"
@@ -43,13 +43,13 @@ SetCompressor lzma
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "Setup.exe"
+OutFile "Velox_Setup.exe"
 InstallDir "$PROGRAMFILES\Endev\Velox"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
 ShowUnInstDetails show
 
-Section "Velox" SEC01
+Section "Velox Main" SEC01
   SetOutPath "$INSTDIR"
   SetOverwrite try
   File "Velox\bin\Release\EnvDTE.dll"
@@ -58,11 +58,14 @@ Section "Velox" SEC01
   File "Velox\bin\Release\Syncfusion.Grid.Base.dll"
   File "Velox\bin\Release\Syncfusion.Grid.Windows.dll"
   File "Velox\bin\Release\Syncfusion.Grid.Windows.XmlSerializers.dll"
+  File "Velox\bin\Release\Syncfusion.Licensing.dll"
+  File "Velox\bin\Release\Syncfusion.Schedule.Base.dll"
+  File "Velox\bin\Release\Syncfusion.Schedule.Windows.dll"
+  File "Velox\bin\Release\Syncfusion.SfInput.WinForms.dll"
   File "Velox\bin\Release\Syncfusion.Shared.Base.dll"
   File "Velox\bin\Release\Syncfusion.Shared.Windows.dll"
   File "Velox\bin\Release\Syncfusion.SpellChecker.Base.dll"
   File "Velox\bin\Release\Syncfusion.Tools.Base.dll"
-  File "Velox\bin\Release\Syncfusion.Licensing.dll"
   File "Velox\bin\Release\Syncfusion.Tools.Windows.dll"
   File "Velox\bin\Release\System.Data.SQLite.dll"
   File "Velox\bin\Release\System.Data.SQLite.dll.config"
@@ -70,6 +73,7 @@ Section "Velox" SEC01
   CreateDirectory "$SMPROGRAMS\Velox"
   CreateShortCut "$SMPROGRAMS\Velox\Velox.lnk" "$INSTDIR\Velox.exe"
   CreateShortCut "$DESKTOP\Velox.lnk" "$INSTDIR\Velox.exe"
+  File "Velox\bin\Release\Velox.pdb"
   File "Velox\bin\Release\WrapSQLBase.dll"
   File "Velox\bin\Release\WrapSQLite.dll"
   SetOutPath "$INSTDIR\x64"
@@ -99,7 +103,7 @@ SectionEnd
 
 Function un.onUninstSuccess
   HideWindow
-  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) was removed from your computer successfully!"
+  MessageBox MB_ICONINFORMATION|MB_OK "$(^Name) was removed from your computer successfully."
 FunctionEnd
 
 Function un.onInit
@@ -114,6 +118,7 @@ Section Uninstall
   Delete "$INSTDIR\x64\SQLite.Interop.dll"
   Delete "$INSTDIR\WrapSQLite.dll"
   Delete "$INSTDIR\WrapSQLBase.dll"
+  Delete "$INSTDIR\Velox.pdb"
   Delete "$INSTDIR\Velox.exe"
   Delete "$INSTDIR\System.Data.SQLite.dll.config"
   Delete "$INSTDIR\System.Data.SQLite.dll"
@@ -122,11 +127,14 @@ Section Uninstall
   Delete "$INSTDIR\Syncfusion.SpellChecker.Base.dll"
   Delete "$INSTDIR\Syncfusion.Shared.Windows.dll"
   Delete "$INSTDIR\Syncfusion.Shared.Base.dll"
+  Delete "$INSTDIR\Syncfusion.SfInput.WinForms.dll"
+  Delete "$INSTDIR\Syncfusion.Schedule.Windows.dll"
+  Delete "$INSTDIR\Syncfusion.Schedule.Base.dll"
+  Delete "$INSTDIR\Syncfusion.Licensing.dll"
   Delete "$INSTDIR\Syncfusion.Grid.Windows.XmlSerializers.dll"
   Delete "$INSTDIR\Syncfusion.Grid.Windows.dll"
   Delete "$INSTDIR\Syncfusion.Grid.Base.dll"
   Delete "$INSTDIR\Syncfusion.Core.WinForms.dll"
-  Delete "$INSTDIR\Syncfusion.Licensing.dll"
   Delete "$INSTDIR\stdole.dll"
   Delete "$INSTDIR\EnvDTE.dll"
 
