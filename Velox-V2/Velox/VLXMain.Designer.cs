@@ -42,6 +42,8 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlContentPanel = new System.Windows.Forms.Panel();
             this.tmrUpdateSessions = new System.Windows.Forms.Timer(this.components);
+            this.nicMainNotify = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tmrIconUpdate = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbxTopShade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -179,6 +181,23 @@
             this.tmrUpdateSessions.Interval = 30;
             this.tmrUpdateSessions.Tick += new System.EventHandler(this.tmrUpdateSessions_Tick);
             // 
+            // nicMainNotify
+            // 
+            this.nicMainNotify.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.nicMainNotify.BalloonTipText = "Click here to open Velox";
+            this.nicMainNotify.BalloonTipTitle = "Velox is still running!";
+            this.nicMainNotify.Icon = ((System.Drawing.Icon)(resources.GetObject("nicMainNotify.Icon")));
+            this.nicMainNotify.Text = "Velox";
+            this.nicMainNotify.Visible = true;
+            this.nicMainNotify.BalloonTipClicked += new System.EventHandler(this.nicMainNotify_BalloonTipClicked);
+            this.nicMainNotify.DoubleClick += new System.EventHandler(this.nicMainNotify_DoubleClick);
+            // 
+            // tmrIconUpdate
+            // 
+            this.tmrIconUpdate.Enabled = true;
+            this.tmrIconUpdate.Interval = 1000;
+            this.tmrIconUpdate.Tick += new System.EventHandler(this.tmrIconUpdate_Tick);
+            // 
             // VLXMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -232,6 +251,8 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlContentPanel;
         private System.Windows.Forms.Timer tmrUpdateSessions;
+        private System.Windows.Forms.NotifyIcon nicMainNotify;
+        private System.Windows.Forms.Timer tmrIconUpdate;
     }
 }
 

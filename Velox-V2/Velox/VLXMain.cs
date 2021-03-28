@@ -292,7 +292,9 @@ namespace Velox
 
         private void btnMinimize_Click(object sender, EventArgs e)
         {
-            ShowPrereleaseWarning();
+            nicMainNotify.Visible = true;
+            nicMainNotify.ShowBalloonTip(500);
+            this.Hide();
         }
 
         private void tmrUpdateSessions_Tick(object sender, EventArgs e)
@@ -360,6 +362,36 @@ namespace Velox
         private void ShowPrereleaseWarning()
         {
             MessageBox.Show("This feature has not been added in the current pre-release of Velox.\r\nVisit https://endev.at/p/velox for updates.", "Velox Pre-Release", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void nicMainNotify_BalloonTipClicked(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void nicMainNotify_DoubleClick(object sender, EventArgs e)
+        {
+            this.Show();
+        }
+
+        private void tmrIconUpdate_Tick(object sender, EventArgs e)
+        {
+            bool anyTimerRunning = false;
+
+            foreach (VLXCategory category in categories)
+                if (category.SessionActive)
+                    anyTimerRunning = true;
+
+            if (anyTimerRunning)
+            {
+                nicMainNotify.Icon = Properties.Resources.VeloxRunning;
+                this.Icon = Properties.Resources.VeloxRunning;
+            }
+            else
+            {
+                nicMainNotify.Icon = Properties.Resources.VeloxStopped;
+                this.Icon = Properties.Resources.VeloxStopped;
+            }
         }
     }
 }

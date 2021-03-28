@@ -69,5 +69,25 @@ namespace Velox.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon VeloxRunning {
+            get {
+                object obj = ResourceManager.GetObject("VeloxRunning", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        /// </summary>
+        internal static System.Drawing.Icon VeloxStopped {
+            get {
+                object obj = ResourceManager.GetObject("VeloxStopped", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
+            }
+        }
     }
 }
