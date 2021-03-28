@@ -148,7 +148,7 @@
             this.btnSafeChanges.Name = "btnSafeChanges";
             this.btnSafeChanges.Size = new System.Drawing.Size(145, 31);
             this.btnSafeChanges.TabIndex = 5;
-            this.btnSafeChanges.Text = "Safe Changes";
+            this.btnSafeChanges.Text = "Save Changes";
             this.btnSafeChanges.UseVisualStyleBackColor = true;
             this.btnSafeChanges.Click += new System.EventHandler(this.btnSafeChanges_Click);
             // 
