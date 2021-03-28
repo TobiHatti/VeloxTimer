@@ -99,11 +99,12 @@ namespace Velox
             string categoryID = Guid.NewGuid().ToString();
             string defaultName = "New Category";
             string defaultDescription = string.Empty;
+            Color defaultColor = Color.DodgerBlue;
 
             try
             {
                 sql.Open();
-                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Category.Self} ({VLXDB.Category.ID}, {VLXDB.Category.Name}, {VLXDB.Category.Description}) VALUES (?,?,?)", categoryID.ToString(), defaultName, defaultDescription);
+                sql.ExecuteNonQuery($"INSERT INTO {VLXDB.Category.Self} ({VLXDB.Category.ID}, {VLXDB.Category.Name}, {VLXDB.Category.Description}, {VLXDB.Category.Color}) VALUES (?,?,?,?)", categoryID.ToString(), defaultName, defaultDescription, defaultColor.ToArgb());
                 sql.Close();
 
                 return new VLXCategory(categoryID) { Name = defaultName, Description = defaultDescription };
@@ -254,7 +255,7 @@ namespace Velox
         public void UpdateCategoryInfo(WrapSQLite sql)
         {
             sql.Open();
-            sql.ExecuteNonQuery($"UPDATE {VLXDB.Category.Self} SET {VLXDB.Category.Name} = ?, {VLXDB.Category.Description} = ? WHERE {VLXDB.Category.ID} = ?", Name, Description, ID);
+            sql.ExecuteNonQuery($"UPDATE {VLXDB.Category.Self} SET {VLXDB.Category.Name} = ?, {VLXDB.Category.Description} = ?, {VLXDB.Category.Color} = ? WHERE {VLXDB.Category.ID} = ?", Name, Description, CategoryColor.ToArgb(), ID);
             sql.Close();
         }
 

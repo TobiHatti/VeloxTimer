@@ -46,7 +46,7 @@ namespace Velox
                     try
                     {
                         // Creating table "categories"
-                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' TEXT, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT,PRIMARY KEY('{VLXDB.Category.ID}'));");
+                        sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Category.Self}' ('{VLXDB.Category.ID}' TEXT, '{VLXDB.Category.Name}' TEXT, '{VLXDB.Category.Description}' TEXT, '{VLXDB.Category.Color}' INTEGER, PRIMARY KEY('{VLXDB.Category.ID}'));");
 
                         // Creating table "timestamps"
                         sql.ExecuteNonQuery($@"CREATE TABLE '{VLXDB.Timestamps.Self}' ('{VLXDB.Timestamps.ID}' INTEGER, '{VLXDB.Timestamps.CategoryID}' TEXT, '{VLXDB.Timestamps.StartTime}' TEXT, '{VLXDB.Timestamps.EndTime}' TEXT, PRIMARY KEY('{VLXDB.Timestamps.ID}' AUTOINCREMENT));");
@@ -90,7 +90,8 @@ namespace Velox
                             categories.Add(new VLXCategory(Convert.ToString(reader[VLXDB.Category.ID]))
                             {
                                 Name = Convert.ToString(reader[VLXDB.Category.Name]),
-                                Description = Convert.ToString(reader[VLXDB.Category.Description])
+                                Description = Convert.ToString(reader[VLXDB.Category.Description]),
+                                CategoryColor = Color.FromArgb(Convert.ToInt32(reader[VLXDB.Category.Color]))
                             });
                         }
                     }

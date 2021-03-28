@@ -76,9 +76,9 @@ namespace Velox
                     {
                         Name = "lblCategory" + category.ID,
                         Text = category.Name,
-                        Location = new Point(0 + verticalOffset, topOffset + i * rowHeight + labelExtraOffset),
+                        Location = new Point(20 + verticalOffset, topOffset + i * rowHeight + labelExtraOffset),
                         AutoSize = false,
-                        Size = new Size(206, 21),
+                        Size = new Size(186, 21),
                         TextAlign = ContentAlignment.TopRight,
                         Anchor = AnchorStyles.Top | AnchorStyles.Left
                     });;
@@ -113,6 +113,16 @@ namespace Velox
                         Size = new Size(14, 30),
                         Anchor = AnchorStyles.Top | AnchorStyles.Left,
                         BackColor = (category.SessionActive ? Color.Lime : Color.Red)
+                    });
+
+                    // Color Picturebox
+                    pnlContentPanel.Controls.Add(new PictureBox()
+                    {
+                        Name = "pbxCatColor" + category.ID,
+                        Location = new Point(0 + verticalOffset, topOffset + i * rowHeight + 1),
+                        Size = new Size(14, 30),
+                        Anchor = AnchorStyles.Top | AnchorStyles.Left,
+                        BackColor = category.CategoryColor
                     });
 
                     // Start/Stop Button

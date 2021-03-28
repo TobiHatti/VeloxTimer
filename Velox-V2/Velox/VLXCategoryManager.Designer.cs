@@ -38,17 +38,17 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSafeChanges = new System.Windows.Forms.Button();
+            this.colCategoryColor = new Syncfusion.Windows.Forms.Tools.ColorPickerUIAdv();
+            this.lblCurrentColor = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lbxCategories
             // 
-            this.lbxCategories.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.lbxCategories.FormattingEnabled = true;
             this.lbxCategories.ItemHeight = 21;
             this.lbxCategories.Location = new System.Drawing.Point(5, 31);
             this.lbxCategories.Name = "lbxCategories";
-            this.lbxCategories.Size = new System.Drawing.Size(248, 277);
+            this.lbxCategories.Size = new System.Drawing.Size(248, 235);
             this.lbxCategories.TabIndex = 7;
             this.lbxCategories.Click += new System.EventHandler(this.lbxCategories_Click);
             this.lbxCategories.SelectedIndexChanged += new System.EventHandler(this.lbxCategories_SelectedIndexChanged);
@@ -72,7 +72,7 @@
             this.txbName.Enabled = false;
             this.txbName.Location = new System.Drawing.Point(259, 55);
             this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(354, 29);
+            this.txbName.Size = new System.Drawing.Size(234, 29);
             this.txbName.TabIndex = 1;
             // 
             // label2
@@ -94,7 +94,7 @@
             this.txbDescription.Location = new System.Drawing.Point(259, 121);
             this.txbDescription.Multiline = true;
             this.txbDescription.Name = "txbDescription";
-            this.txbDescription.Size = new System.Drawing.Size(354, 89);
+            this.txbDescription.Size = new System.Drawing.Size(234, 109);
             this.txbDescription.TabIndex = 2;
             // 
             // label3
@@ -111,7 +111,7 @@
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(515, 281);
+            this.btnClose.Location = new System.Drawing.Point(546, 279);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(98, 31);
             this.btnClose.TabIndex = 6;
@@ -121,7 +121,8 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(259, 216);
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAdd.Location = new System.Drawing.Point(5, 279);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(69, 31);
             this.btnAdd.TabIndex = 3;
@@ -131,8 +132,9 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDelete.Enabled = false;
-            this.btnDelete.Location = new System.Drawing.Point(334, 216);
+            this.btnDelete.Location = new System.Drawing.Point(80, 279);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(69, 31);
             this.btnDelete.TabIndex = 4;
@@ -142,21 +144,64 @@
             // 
             // btnSafeChanges
             // 
-            this.btnSafeChanges.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSafeChanges.Enabled = false;
-            this.btnSafeChanges.Location = new System.Drawing.Point(481, 216);
+            this.btnSafeChanges.Location = new System.Drawing.Point(259, 235);
             this.btnSafeChanges.Name = "btnSafeChanges";
-            this.btnSafeChanges.Size = new System.Drawing.Size(132, 31);
+            this.btnSafeChanges.Size = new System.Drawing.Size(145, 31);
             this.btnSafeChanges.TabIndex = 5;
             this.btnSafeChanges.Text = "Safe Changes";
             this.btnSafeChanges.UseVisualStyleBackColor = true;
             this.btnSafeChanges.Click += new System.EventHandler(this.btnSafeChanges_Click);
             // 
+            // colCategoryColor.RecentGroup
+            // 
+            this.colCategoryColor.RecentGroup.Name = "Recent Colors";
+            this.colCategoryColor.RecentGroup.Visible = false;
+            // 
+            // colCategoryColor.StandardGroup
+            // 
+            this.colCategoryColor.StandardGroup.Name = "Standard Colors";
+            // 
+            // colCategoryColor.ThemeGroup
+            // 
+            this.colCategoryColor.ThemeGroup.IsSubItemsVisible = true;
+            this.colCategoryColor.ThemeGroup.Name = "Theme Colors";
+            // 
+            // colCategoryColor
+            // 
+            this.colCategoryColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.colCategoryColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.colCategoryColor.Enabled = false;
+            this.colCategoryColor.HorizontalItemsSpacing = 1;
+            this.colCategoryColor.Location = new System.Drawing.Point(499, 31);
+            this.colCategoryColor.Name = "colCategoryColor";
+            this.colCategoryColor.Size = new System.Drawing.Size(145, 199);
+            this.colCategoryColor.Style = Syncfusion.Windows.Forms.Tools.ColorPickerUIAdv.visualstyle.Metro;
+            this.colCategoryColor.TabIndex = 19;
+            this.colCategoryColor.Text = "colorPickerUIAdv1";
+            this.colCategoryColor.ThemeName = "Metro";
+            this.colCategoryColor.VerticalItemsSpacing = 1;
+            this.colCategoryColor.Picked += new Syncfusion.Windows.Forms.Tools.ColorPickerUIAdv.ColorPickedEventHandler(this.colCategoryColor_Picked);
+            // 
+            // lblCurrentColor
+            // 
+            this.lblCurrentColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCurrentColor.BackColor = System.Drawing.Color.LightSalmon;
+            this.lblCurrentColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblCurrentColor.Enabled = false;
+            this.lblCurrentColor.Location = new System.Drawing.Point(499, 2);
+            this.lblCurrentColor.Name = "lblCurrentColor";
+            this.lblCurrentColor.Size = new System.Drawing.Size(145, 25);
+            this.lblCurrentColor.TabIndex = 20;
+            this.lblCurrentColor.Text = "Current Color";
+            this.lblCurrentColor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // VLXCategoryManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(618, 317);
+            this.ClientSize = new System.Drawing.Size(649, 315);
+            this.Controls.Add(this.lblCurrentColor);
+            this.Controls.Add(this.colCategoryColor);
             this.Controls.Add(this.btnSafeChanges);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnAdd);
@@ -194,5 +239,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSafeChanges;
+        private Syncfusion.Windows.Forms.Tools.ColorPickerUIAdv colCategoryColor;
+        private System.Windows.Forms.Label lblCurrentColor;
     }
 }

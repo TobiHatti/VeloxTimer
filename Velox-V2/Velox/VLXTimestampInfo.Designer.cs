@@ -37,12 +37,13 @@ namespace Velox
             this.label5 = new System.Windows.Forms.Label();
             this.lblTimespan = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblCategoryName = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClose.Location = new System.Drawing.Point(190, 177);
+            this.btnClose.Location = new System.Drawing.Point(205, 203);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(74, 33);
             this.btnClose.TabIndex = 0;
@@ -53,7 +54,7 @@ namespace Velox
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 13);
+            this.label1.Location = new System.Drawing.Point(5, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(115, 21);
             this.label1.TabIndex = 1;
@@ -62,7 +63,7 @@ namespace Velox
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(5, 34);
+            this.label2.Location = new System.Drawing.Point(5, 60);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(45, 21);
             this.label2.TabIndex = 2;
@@ -71,7 +72,7 @@ namespace Velox
             // lblStartTime
             // 
             this.lblStartTime.AutoSize = true;
-            this.lblStartTime.Location = new System.Drawing.Point(23, 55);
+            this.lblStartTime.Location = new System.Drawing.Point(23, 81);
             this.lblStartTime.Name = "lblStartTime";
             this.lblStartTime.Size = new System.Drawing.Size(106, 21);
             this.lblStartTime.TabIndex = 3;
@@ -80,7 +81,7 @@ namespace Velox
             // lblEndTime
             // 
             this.lblEndTime.AutoSize = true;
-            this.lblEndTime.Location = new System.Drawing.Point(23, 97);
+            this.lblEndTime.Location = new System.Drawing.Point(23, 123);
             this.lblEndTime.Name = "lblEndTime";
             this.lblEndTime.Size = new System.Drawing.Size(101, 21);
             this.lblEndTime.TabIndex = 5;
@@ -89,7 +90,7 @@ namespace Velox
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 76);
+            this.label5.Location = new System.Drawing.Point(5, 102);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(40, 21);
             this.label5.TabIndex = 4;
@@ -98,7 +99,7 @@ namespace Velox
             // lblTimespan
             // 
             this.lblTimespan.AutoSize = true;
-            this.lblTimespan.Location = new System.Drawing.Point(23, 148);
+            this.lblTimespan.Location = new System.Drawing.Point(23, 174);
             this.lblTimespan.Name = "lblTimespan";
             this.lblTimespan.Size = new System.Drawing.Size(108, 21);
             this.lblTimespan.TabIndex = 7;
@@ -107,17 +108,28 @@ namespace Velox
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 127);
+            this.label4.Location = new System.Drawing.Point(5, 153);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(80, 21);
             this.label4.TabIndex = 6;
             this.label4.Text = "Timespan:";
             // 
+            // lblCategoryName
+            // 
+            this.lblCategoryName.AutoSize = true;
+            this.lblCategoryName.Font = new System.Drawing.Font("Leelawadee UI Semilight", 12F, System.Drawing.FontStyle.Bold);
+            this.lblCategoryName.Location = new System.Drawing.Point(3, 12);
+            this.lblCategoryName.Name = "lblCategoryName";
+            this.lblCategoryName.Size = new System.Drawing.Size(163, 21);
+            this.lblCategoryName.TabIndex = 8;
+            this.lblCategoryName.Text = "-- CategoryName --";
+            // 
             // VLXTimestampInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(269, 215);
+            this.ClientSize = new System.Drawing.Size(284, 241);
+            this.Controls.Add(this.lblCategoryName);
             this.Controls.Add(this.lblTimespan);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.lblEndTime);
@@ -152,5 +164,6 @@ namespace Velox
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblTimespan;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblCategoryName;
     }
 }

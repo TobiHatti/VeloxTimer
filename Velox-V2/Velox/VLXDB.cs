@@ -16,6 +16,7 @@ namespace Velox
             public const string ID = "ID";
             public const string Name = "CategoryName";
             public const string Description = "CategoryDescription";
+            public const string Color = "CategoryColor";
         }
 
         public static class Timestamps

@@ -63,6 +63,7 @@ namespace Velox
 
             selectedCategory.Name = txbName.Text;
             selectedCategory.Description = txbDescription.Text;
+            selectedCategory.CategoryColor = lblCurrentColor.BackColor;
 
             selectedCategory.UpdateCategoryInfo(Sql);
 
@@ -86,6 +87,8 @@ namespace Velox
             {
                 txbName.Text = selectedCategory.Name;
                 txbDescription.Text = selectedCategory.Description;
+                lblCurrentColor.BackColor = selectedCategory.CategoryColor;
+                colCategoryColor.SelectedColor = selectedCategory.CategoryColor;
 
                 ToggleFormState(true);
             }
@@ -103,6 +106,13 @@ namespace Velox
             txbDescription.Enabled = enabled;
             btnDelete.Enabled = enabled;
             btnSafeChanges.Enabled = enabled;
+            lblCurrentColor.Enabled = enabled;
+            colCategoryColor.Enabled = enabled;
+        }
+
+        private void colCategoryColor_Picked(object sender, Syncfusion.Windows.Forms.Tools.ColorPickerUIAdv.ColorPickedEventArgs args)
+        {
+            lblCurrentColor.BackColor = colCategoryColor.SelectedColor;
         }
     }
 }

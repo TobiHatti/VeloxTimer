@@ -29,6 +29,7 @@ namespace Velox
 
         private void VLXTimestampInfo_Load(object sender, EventArgs e)
         {
+            lblCategoryName.Text = Category.Name;
             lblStartTime.Text = Timestamp.StartTime.ToLongDateString() + ", " + Timestamp.StartTime.ToShortTimeString();
             lblEndTime.Text = Timestamp.EndTime.ToLongDateString() + ", " + Timestamp.EndTime.ToShortTimeString();
             lblTimespan.Text = (Timestamp.EndTime - Timestamp.StartTime).ToString(@"hh\:mm\:ss");
