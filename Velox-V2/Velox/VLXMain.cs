@@ -22,7 +22,24 @@ namespace Velox
 
         public VLXMain()
         {
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                if (MessageBox.Show("Would you like to import a new Velox-Config-File (*.vlx) ?\r\n\r\nWARNING: When importing a new config-file, the old file and all of it's data (Categories, Timestamps, etc.) will be lost! Do you want to continue?", "Import Velox-Config", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    VLXImporter importer = new VLXImporter();
+                    if(importer.ShowDialog() == DialogResult.OK)
+                    {
+                        MessageBox.Show("Import successfull!", "Import Velox-Config", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Import failed. Your *.vlx-File might be incopatible.", "Import Velox-Config", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+
             InitializeComponent();
+
             VLXLib.SetFormStyle(this);
 
             cbxTotalTimespan.SelectedIndex = 0;

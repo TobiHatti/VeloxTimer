@@ -105,6 +105,12 @@
       <DependentUpon>VLXDetailedEval.cs</DependentUpon>
     </Compile>
     <Compile Include="VLXException.cs" />
+    <Compile Include="VLXImporter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VLXImporter.Designer.cs">
+      <DependentUpon>VLXImporter.cs</DependentUpon>
+    </Compile>
     <Compile Include="VLXLib.cs" />
     <Compile Include="VLXMain.cs">
       <SubType>Form</SubType>
@@ -141,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VLXDetailedEval.resx">
       <DependentUpon>VLXDetailedEval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VLXImporter.resx">
+      <DependentUpon>VLXImporter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VLXMain.resx">
       <DependentUpon>VLXMain.cs</DependentUpon>

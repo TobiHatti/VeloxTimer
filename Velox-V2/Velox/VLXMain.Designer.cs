@@ -45,6 +45,7 @@
             this.nicMainNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.tmrIconUpdate = new System.Windows.Forms.Timer(this.components);
             this.sfdExport = new System.Windows.Forms.SaveFileDialog();
+            this.ofdVeloxImport = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTopShade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -203,6 +204,13 @@
             // 
             this.sfdExport.FileName = "VeloxExport";
             this.sfdExport.Filter = "CSV Spreadsheet|*.csv|Velox Config File|*.vlx";
+            this.sfdExport.Title = "Export Velox Data";
+            // 
+            // ofdVeloxImport
+            // 
+            this.ofdVeloxImport.FileName = "VeloxConfig.vlx";
+            this.ofdVeloxImport.Filter = "Velox Config-Files|*.vlx|All Files|*.*";
+            this.ofdVeloxImport.Title = "Import Velox Config";
             // 
             // VLXMain
             // 
@@ -260,6 +268,7 @@
         private System.Windows.Forms.NotifyIcon nicMainNotify;
         private System.Windows.Forms.Timer tmrIconUpdate;
         private System.Windows.Forms.SaveFileDialog sfdExport;
+        private System.Windows.Forms.OpenFileDialog ofdVeloxImport;
     }
 }
 
