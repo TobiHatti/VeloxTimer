@@ -2,6 +2,7 @@
 using Syncfusion.Windows.Forms.Tools.Win32API;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -31,6 +32,7 @@ namespace Velox
         public string Name { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public List<VLXTimestamp> Timestamps { get; set; } = new List<VLXTimestamp>();
+        public Color CategoryColor { get; set; } = Color.Red;
 
         public bool SessionActive { get; private set; }
         public TimeSpan CurrentSessionTime

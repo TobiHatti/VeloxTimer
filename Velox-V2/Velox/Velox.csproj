@@ -127,6 +127,12 @@
       <DependentUpon>VLXQuickEval.cs</DependentUpon>
     </Compile>
     <Compile Include="VLXTimestamp.cs" />
+    <Compile Include="VLXTimestampInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VLXTimestampInfo.Designer.cs">
+      <DependentUpon>VLXTimestampInfo.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="VLXCategoryManager.resx">
       <DependentUpon>VLXCategoryManager.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="VLXQuickEval.resx">
       <DependentUpon>VLXQuickEval.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VLXTimestampInfo.resx">
+      <DependentUpon>VLXTimestampInfo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

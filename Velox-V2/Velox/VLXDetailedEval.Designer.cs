@@ -40,9 +40,9 @@ namespace Velox
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlTimeLine.AutoScroll = true;
             this.pnlTimeLine.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlTimeLine.Location = new System.Drawing.Point(5, 5);
+            this.pnlTimeLine.Location = new System.Drawing.Point(196, 5);
             this.pnlTimeLine.Name = "pnlTimeLine";
-            this.pnlTimeLine.Size = new System.Drawing.Size(1040, 594);
+            this.pnlTimeLine.Size = new System.Drawing.Size(849, 594);
             this.pnlTimeLine.TabIndex = 4;
             // 
             // trbPanelScale
@@ -76,6 +76,7 @@ namespace Velox
             this.Style.MdiChild.IconVerticalAlignment = System.Windows.Forms.VisualStyles.VerticalAlignment.Center;
             this.Text = "Detailed Evaluation";
             this.Load += new System.EventHandler(this.VLXDetailedEval_Load);
+            this.ResizeEnd += new System.EventHandler(this.VLXDetailedEval_ResizeEnd);
             this.ResumeLayout(false);
             this.PerformLayout();
 

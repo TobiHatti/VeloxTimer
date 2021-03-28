@@ -127,3 +127,4 @@ F:\Projects\Velox\Velox-V2\Velox\obj\Debug\Velox.csproj.CoreCompileInputs.cache
 F:\Projects\Velox\Velox-V2\Velox\obj\Debug\Velox.csproj.CopyComplete
 F:\Projects\Velox\Velox-V2\Velox\obj\Debug\Velox.exe
 F:\Projects\Velox\Velox-V2\Velox\obj\Debug\Velox.pdb
+F:\Projects\Velox\Velox-V2\Velox\obj\Debug\Velox.VLXTimestampInfo.resources
