@@ -287,7 +287,12 @@ namespace Velox
 
         private void btnExport_Click(object sender, EventArgs e)
         {
-            ShowPrereleaseWarning();
+            if(sfdExport.ShowDialog() == DialogResult.OK)
+            {
+                if (sfdExport.FileName.ToLower().EndsWith(".csv")) ExportAsCSV(sfdExport.FileName);
+                if (sfdExport.FileName.ToLower().EndsWith(".vlx")) ExportAsVLX(sfdExport.FileName);
+
+            }
         }
 
         private void btnMinimize_Click(object sender, EventArgs e)
@@ -392,6 +397,28 @@ namespace Velox
                 nicMainNotify.Icon = Properties.Resources.VeloxStopped;
                 this.Icon = Properties.Resources.VeloxStopped;
             }
+        }
+
+        private void ExportAsCSV(string filename)
+        {
+            StreamWriter sw = new StreamWriter(filename);
+
+            sw.WriteLine("Category;StartTime;EndTime");
+
+            foreach(VLXCategory category in categories)
+            {
+                foreach(VLXTimestamp ts in category.Timestamps)
+                {
+                    sw.WriteLine($"{category.Name};{ts.StartTime.ToUniversalTime()};{ts.EndTime.ToUniversalTime()}");
+                }
+            }
+
+            sw.Close();
+        }
+
+        private void ExportAsVLX(string filename)
+        {
+            File.Copy(VLXLib.ConfigFileName, filename);
         }
     }
 }

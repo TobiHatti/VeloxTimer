@@ -44,6 +44,7 @@
             this.tmrUpdateSessions = new System.Windows.Forms.Timer(this.components);
             this.nicMainNotify = new System.Windows.Forms.NotifyIcon(this.components);
             this.tmrIconUpdate = new System.Windows.Forms.Timer(this.components);
+            this.sfdExport = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbxTopShade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -198,6 +199,11 @@
             this.tmrIconUpdate.Interval = 1000;
             this.tmrIconUpdate.Tick += new System.EventHandler(this.tmrIconUpdate_Tick);
             // 
+            // sfdExport
+            // 
+            this.sfdExport.FileName = "VeloxExport";
+            this.sfdExport.Filter = "CSV Spreadsheet|*.csv|Velox Config File|*.vlx";
+            // 
             // VLXMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
@@ -253,6 +259,7 @@
         private System.Windows.Forms.Timer tmrUpdateSessions;
         private System.Windows.Forms.NotifyIcon nicMainNotify;
         private System.Windows.Forms.Timer tmrIconUpdate;
+        private System.Windows.Forms.SaveFileDialog sfdExport;
     }
 }
 
